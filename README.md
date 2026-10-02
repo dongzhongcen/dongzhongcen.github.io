@@ -1,6 +1,6 @@
 # dongzhongcen.github.io
 
-我的个人博客：https://dongzhongcen.github.io（主题：[Hux Blog](https://github.com/Huxpro/huxpro.github.io)）
+我的个人博客：https://dongzhongcen.github.io（主题：[Chirpy](https://github.com/cotes2020/jekyll-theme-chirpy)）
 
 ## 怎么写一篇新日记
 
@@ -10,12 +10,9 @@
 
 ```markdown
 ---
-layout: post
 title: "今天学了什么"
-subtitle: "一句话副标题（可以不写）"
-date: 2026-10-03
-author: "Marianna"
-header-img: "img/post-bg-universe.jpg"
+date: 2026-10-03 21:00:00 +0800
+categories: [学习日记]
 tags: [python, fastapi]
 ---
 
@@ -33,7 +30,7 @@ tags: [python, fastapi]
 ## 明天想做什么
 ```
 
-4. 点 **Commit changes**，一两分钟后网站就会自动更新。
+4. 点 **Commit changes**，在仓库的 **Actions** 页面能看到发布进度，绿色对勾出现后网站就更新了（一般两三分钟）。
 
-- `header-img` 是文章顶部的大图，可以换成 `img` 文件夹里任意一张，也可以自己上传图片到 `img` 再填它的路径。
-- 项目页会自动读取我所有的公开仓库，不用手动维护。
+- 项目页每天早上 6 点左右会自动同步一次 GitHub 上的公开仓库，每次提交日记时也会同步。
+- 每篇日记页面上有“编辑”链接，点进去就能直接在 GitHub 上修改。

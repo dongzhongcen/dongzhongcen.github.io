@@ -1,6 +1,0 @@
-.repo-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap:16px; margin: 20px 0 40px; }
-.repo-grid .repo { display:block; background:#fff; border:1px solid #e5e5e5; border-radius:8px; padding:16px 18px; color:#404040; transition: box-shadow .2s, transform .2s; }
-.repo-grid .repo:hover { text-decoration:none; color:#404040; box-shadow:0 6px 18px rgba(0,0,0,.08); transform: translateY(-2px); border-color:#0085a1; }
-.repo-grid .repo h3 { margin:0 0 8px; font-size:17px; color:#0085a1; word-break:break-all; }
-.repo-grid .repo p { margin:0 0 12px; font-size:14px; line-height:1.6; }
-.repo-grid .repo-meta { font-size:12px; color:#999; display:flex; gap:12px; flex-wrap:wrap; }
