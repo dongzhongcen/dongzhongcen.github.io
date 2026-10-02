@@ -335,7 +335,7 @@
       var n = innerWidth < 768 ? 18 : 30;
       for (var i = 0; i < n; i++) {
         var a = -Math.PI / 2 + (Math.random() - 0.5) * Math.PI * 1.3;
-        var v = 4 + Math.random() * 6;
+        var v = 2 + Math.random() * 3;
         bits.push({
           x: x, y: y,
           vx: Math.cos(a) * v, vy: Math.sin(a) * v,
@@ -354,8 +354,8 @@
       for (var i = bits.length - 1; i >= 0; i--) {
         var b = bits[i];
         b.life += k;
-        b.vy += 0.22 * k; b.vx *= Math.pow(0.985, k); b.vy *= Math.pow(0.985, k);
-        b.x += b.vx * k + Math.sin(b.life / 8) * 0.4; b.y += b.vy * k;
+        b.vy += 0.11 * k; b.vx *= Math.pow(0.985, k); b.vy *= Math.pow(0.985, k);
+        b.x += b.vx * k + Math.sin(b.life / 8) * 0.2; b.y += b.vy * k;
         b.rot += b.vr * k; b.flip += b.vf * k;
         var alpha = 1 - Math.max(0, (b.life - b.max * 0.6) / (b.max * 0.4));
         if (alpha <= 0 || b.y > H + 30) { bits.splice(i, 1); continue; }
