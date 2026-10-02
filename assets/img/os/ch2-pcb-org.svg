@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 615" width="760" height="615" font-family="'PingFang SC','Microsoft YaHei','Noto Sans CJK SC','Noto Sans SC',sans-serif">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#212529"/></marker>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e03131"/></marker></defs>
+<rect width="760" height="615" rx="12" fill="#ffffff"/>
+<text x="380" y="26" font-size="18" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">PCB 的组织方式：链接方式与索引方式</text>
+<text x="20" y="58" font-size="14" fill="#212529" text-anchor="start" font-weight="bold" dominant-baseline="middle">（a）链接方式：同一状态的 PCB 用链接字串成一条队列</text>
+<rect x="30" y="80" width="140" height="34" rx="6" fill="#495057" stroke="none" stroke-width="1.5"/>
+<text x="100" y="97" font-size="14" fill="#fff" text-anchor="middle" font-weight="normal" dominant-baseline="middle">执行指针</text>
+<line x1="170" y1="97" x2="218" y2="97" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="220" y="80" width="80" height="34" rx="4" fill="#ffc9c9" stroke="#868e96" stroke-width="1.5"/>
+<text x="260" y="97" font-size="13" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">PCB 3</text>
+<text x="312" y="97" font-size="15" fill="#868e96" text-anchor="middle" font-weight="normal" dominant-baseline="middle">∧</text>
+<rect x="30" y="132" width="140" height="34" rx="6" fill="#495057" stroke="none" stroke-width="1.5"/>
+<text x="100" y="149" font-size="14" fill="#fff" text-anchor="middle" font-weight="normal" dominant-baseline="middle">就绪队列指针</text>
+<line x1="170" y1="149" x2="218" y2="149" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="220" y="132" width="80" height="34" rx="4" fill="#d0ebff" stroke="#868e96" stroke-width="1.5"/>
+<text x="260" y="149" font-size="13" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">PCB 1</text>
+<line x1="300" y1="149" x2="338" y2="149" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="340" y="132" width="80" height="34" rx="4" fill="#d0ebff" stroke="#868e96" stroke-width="1.5"/>
+<text x="380" y="149" font-size="13" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">PCB 5</text>
+<line x1="420" y1="149" x2="458" y2="149" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="460" y="132" width="80" height="34" rx="4" fill="#d0ebff" stroke="#868e96" stroke-width="1.5"/>
+<text x="500" y="149" font-size="13" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">PCB 6</text>
+<text x="552" y="149" font-size="15" fill="#868e96" text-anchor="middle" font-weight="normal" dominant-baseline="middle">∧</text>
+<rect x="30" y="184" width="140" height="34" rx="6" fill="#495057" stroke="none" stroke-width="1.5"/>
+<text x="100" y="201" font-size="14" fill="#fff" text-anchor="middle" font-weight="normal" dominant-baseline="middle">阻塞队列指针</text>
+<line x1="170" y1="201" x2="218" y2="201" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="220" y="184" width="80" height="34" rx="4" fill="#e9ecef" stroke="#868e96" stroke-width="1.5"/>
+<text x="260" y="201" font-size="13" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">PCB 2</text>
+<line x1="300" y1="201" x2="338" y2="201" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="340" y="184" width="80" height="34" rx="4" fill="#e9ecef" stroke="#868e96" stroke-width="1.5"/>
+<text x="380" y="201" font-size="13" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">PCB 4</text>
+<text x="432" y="201" font-size="15" fill="#868e96" text-anchor="middle" font-weight="normal" dominant-baseline="middle">∧</text>
+<rect x="30" y="236" width="140" height="34" rx="6" fill="#495057" stroke="none" stroke-width="1.5"/>
+<text x="100" y="253" font-size="14" fill="#fff" text-anchor="middle" font-weight="normal" dominant-baseline="middle">空闲队列指针</text>
+<line x1="170" y1="253" x2="218" y2="253" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="220" y="236" width="80" height="34" rx="4" fill="#f8f9fa" stroke="#868e96" stroke-width="1.5"/>
+<text x="260" y="253" font-size="13" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">PCB 7</text>
+<line x1="300" y1="253" x2="338" y2="253" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="340" y="236" width="80" height="34" rx="4" fill="#f8f9fa" stroke="#868e96" stroke-width="1.5"/>
+<text x="380" y="253" font-size="13" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">PCB 8</text>
+<text x="432" y="253" font-size="15" fill="#868e96" text-anchor="middle" font-weight="normal" dominant-baseline="middle">∧</text>
+<text x="30" y="290" font-size="13" fill="#868e96" text-anchor="start" font-weight="normal" dominant-baseline="middle">每个 PCB 里有一个“链接字”，指向队列中下一个 PCB 的位置；∧ 表示队列结束</text>
+<text x="20" y="320" font-size="14" fill="#212529" text-anchor="start" font-weight="bold" dominant-baseline="middle">（b）索引方式：按状态建索引表，表项记录 PCB 的地址</text>
+<rect x="560" y="345" width="90" height="28" rx="0" fill="#f1f3f5" stroke="#868e96" stroke-width="1.5"/>
+<text x="605" y="359" font-size="13" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">PCB 1</text>
+<rect x="560" y="373" width="90" height="28" rx="0" fill="#f1f3f5" stroke="#868e96" stroke-width="1.5"/>
+<text x="605" y="387" font-size="13" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">PCB 2</text>
+<rect x="560" y="401" width="90" height="28" rx="0" fill="#f1f3f5" stroke="#868e96" stroke-width="1.5"/>
+<text x="605" y="415" font-size="13" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">PCB 3</text>
+<rect x="560" y="429" width="90" height="28" rx="0" fill="#f1f3f5" stroke="#868e96" stroke-width="1.5"/>
+<text x="605" y="443" font-size="13" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">PCB 4</text>
+<rect x="560" y="457" width="90" height="28" rx="0" fill="#f1f3f5" stroke="#868e96" stroke-width="1.5"/>
+<text x="605" y="471" font-size="13" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">PCB 5</text>
+<rect x="560" y="485" width="90" height="28" rx="0" fill="#f1f3f5" stroke="#868e96" stroke-width="1.5"/>
+<text x="605" y="499" font-size="13" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">PCB 6</text>
+<rect x="560" y="513" width="90" height="28" rx="0" fill="#f1f3f5" stroke="#868e96" stroke-width="1.5"/>
+<text x="605" y="527" font-size="13" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">PCB 7</text>
+<rect x="560" y="541" width="90" height="28" rx="0" fill="#f1f3f5" stroke="#868e96" stroke-width="1.5"/>
+<text x="605" y="555" font-size="13" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">PCB 8</text>
+<rect x="30" y="352" width="140" height="34" rx="6" fill="#495057" stroke="none" stroke-width="1.5"/><text x="100" y="369" font-size="14" fill="#fff" text-anchor="middle" font-weight="normal" dominant-baseline="middle">就绪表指针</text><line x1="170" y1="369" x2="248" y2="369" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/><rect x="250" y="352" width="120" height="26" rx="0" fill="#d0ebff" stroke="#868e96" stroke-width="1.5"/><text x="310" y="365" font-size="12" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">PCB 1 的地址</text><line x1="370" y1="365" x2="558" y2="359" stroke="#868e96" stroke-width="1.1" marker-end="url(#ar)"/><rect x="250" y="378" width="120" height="26" rx="0" fill="#d0ebff" stroke="#868e96" stroke-width="1.5"/><text x="310" y="391" font-size="12" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">PCB 5 的地址</text><line x1="370" y1="391" x2="558" y2="471" stroke="#868e96" stroke-width="1.1" marker-end="url(#ar)"/><rect x="250" y="404" width="120" height="26" rx="0" fill="#d0ebff" stroke="#868e96" stroke-width="1.5"/><text x="310" y="417" font-size="12" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">PCB 6 的地址</text><line x1="370" y1="417" x2="558" y2="499" stroke="#868e96" stroke-width="1.1" marker-end="url(#ar)"/>
+<rect x="30" y="470" width="140" height="34" rx="6" fill="#495057" stroke="none" stroke-width="1.5"/><text x="100" y="487" font-size="14" fill="#fff" text-anchor="middle" font-weight="normal" dominant-baseline="middle">阻塞表指针</text><line x1="170" y1="487" x2="248" y2="487" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/><rect x="250" y="470" width="120" height="26" rx="0" fill="#e9ecef" stroke="#868e96" stroke-width="1.5"/><text x="310" y="483" font-size="12" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">PCB 2 的地址</text><line x1="370" y1="483" x2="558" y2="387" stroke="#868e96" stroke-width="1.1" marker-end="url(#ar)"/><rect x="250" y="496" width="120" height="26" rx="0" fill="#e9ecef" stroke="#868e96" stroke-width="1.5"/><text x="310" y="509" font-size="12" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">PCB 4 的地址</text><line x1="370" y1="509" x2="558" y2="443" stroke="#868e96" stroke-width="1.1" marker-end="url(#ar)"/>
+<text x="310" y="341" font-size="12" fill="#1c7ed6" text-anchor="middle" font-weight="normal" dominant-baseline="middle">就绪索引表</text>
+<text x="310" y="459" font-size="12" fill="#868e96" text-anchor="middle" font-weight="normal" dominant-baseline="middle">阻塞索引表</text>
+<text x="380" y="595" font-size="13" fill="#e03131" text-anchor="middle" font-weight="normal" dominant-baseline="middle">线性方式最简单，但每次都要扫描整张表；链接和索引方式查找更快</text>
+</svg>

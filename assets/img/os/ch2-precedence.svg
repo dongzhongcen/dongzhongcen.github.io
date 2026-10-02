@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 540" width="760" height="540" font-family="'PingFang SC','Microsoft YaHei','Noto Sans CJK SC','Noto Sans SC',sans-serif">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#212529"/></marker>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e03131"/></marker></defs>
+<rect width="760" height="540" rx="12" fill="#ffffff"/>
+<text x="380" y="26" font-size="18" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">前趋图：程序顺序执行 vs 并发执行</text>
+<text x="20" y="60" font-size="14" fill="#212529" text-anchor="start" font-weight="bold" dominant-baseline="middle">（a）顺序执行：I → C → P 一个接一个，前一步做完才能做下一步</text>
+<circle cx="90" cy="100" r="19" fill="#1c7ed6"/><text x="90" y="100" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">I1</text>
+<line x1="109.0" y1="100.0" x2="178.0" y2="100.0" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<circle cx="200" cy="100" r="19" fill="#fab005"/><text x="200" y="100" font-size="13" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">C1</text>
+<line x1="219.0" y1="100.0" x2="288.0" y2="100.0" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<circle cx="310" cy="100" r="19" fill="#e03131"/><text x="310" y="100" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">P1</text>
+<line x1="329.0" y1="100.0" x2="398.0" y2="100.0" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<circle cx="420" cy="100" r="19" fill="#1c7ed6"/><text x="420" y="100" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">I2</text>
+<line x1="439.0" y1="100.0" x2="508.0" y2="100.0" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<circle cx="530" cy="100" r="19" fill="#fab005"/><text x="530" y="100" font-size="13" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">C2</text>
+<line x1="549.0" y1="100.0" x2="618.0" y2="100.0" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<circle cx="640" cy="100" r="19" fill="#e03131"/><text x="640" y="100" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">P2</text>
+<text x="20" y="150" font-size="14" fill="#212529" text-anchor="start" font-weight="bold" dominant-baseline="middle">（b）并发执行：I2 不用等 P1 做完，只要满足箭头约束，三类操作可以重叠进行</text>
+<line x1="106.35760403607199" y1="199.66585693040616" x2="181.05961637928505" y2="243.8079551332139" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="216.357604036072" y1="264.66585693040616" x2="291.05961637928505" y2="308.8079551332139" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="109.0" y1="190.0" x2="178.0" y2="190.0" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="219.0" y1="255.0" x2="288.0" y2="255.0" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="329.0" y1="320.0" x2="398.0" y2="320.0" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="216.357604036072" y1="199.66585693040616" x2="291.05961637928505" y2="243.8079551332139" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="326.357604036072" y1="264.66585693040616" x2="401.05961637928505" y2="308.8079551332139" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="219.0" y1="190.0" x2="288.0" y2="190.0" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="329.0" y1="255.0" x2="398.0" y2="255.0" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="439.0" y1="320.0" x2="508.0" y2="320.0" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="326.357604036072" y1="199.66585693040616" x2="401.05961637928505" y2="243.8079551332139" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="436.357604036072" y1="264.66585693040616" x2="511.05961637928505" y2="308.8079551332139" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="329.0" y1="190.0" x2="398.0" y2="190.0" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="439.0" y1="255.0" x2="508.0" y2="255.0" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="549.0" y1="320.0" x2="618.0" y2="320.0" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="436.357604036072" y1="199.66585693040616" x2="511.05961637928505" y2="243.8079551332139" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="546.357604036072" y1="264.66585693040616" x2="621.0596163792851" y2="308.8079551332139" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<circle cx="90" cy="190" r="19" fill="#1c7ed6"/><text x="90" y="190" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">I1</text>
+<circle cx="200" cy="255" r="19" fill="#fab005"/><text x="200" y="255" font-size="13" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">C1</text>
+<circle cx="310" cy="320" r="19" fill="#e03131"/><text x="310" y="320" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">P1</text>
+<circle cx="200" cy="190" r="19" fill="#1c7ed6"/><text x="200" y="190" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">I2</text>
+<circle cx="310" cy="255" r="19" fill="#fab005"/><text x="310" y="255" font-size="13" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">C2</text>
+<circle cx="420" cy="320" r="19" fill="#e03131"/><text x="420" y="320" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">P2</text>
+<circle cx="310" cy="190" r="19" fill="#1c7ed6"/><text x="310" y="190" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">I3</text>
+<circle cx="420" cy="255" r="19" fill="#fab005"/><text x="420" y="255" font-size="13" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">C3</text>
+<circle cx="530" cy="320" r="19" fill="#e03131"/><text x="530" y="320" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">P3</text>
+<circle cx="420" cy="190" r="19" fill="#1c7ed6"/><text x="420" y="190" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">I4</text>
+<circle cx="530" cy="255" r="19" fill="#fab005"/><text x="530" y="255" font-size="13" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">C4</text>
+<circle cx="640" cy="320" r="19" fill="#e03131"/><text x="640" y="320" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">P4</text>
+<text x="685" y="190" font-size="13" fill="#1c7ed6" text-anchor="start" font-weight="normal" dominant-baseline="middle">I：输入</text>
+<text x="685" y="255" font-size="13" fill="#e67700" text-anchor="start" font-weight="normal" dominant-baseline="middle">C：计算</text>
+<text x="685" y="320" font-size="13" fill="#e03131" text-anchor="start" font-weight="normal" dominant-baseline="middle">P：打印</text>
+<text x="20" y="375" font-size="14" fill="#212529" text-anchor="start" font-weight="bold" dominant-baseline="middle">（c）例子：S3 要用 a 和 b，S4 要用 c，所以 S1、S2 必须先于 S3，S3 先于 S4</text>
+<line x1="128.50298298509406" y1="419.31736269652197" x2="238.57549338568055" y2="445.0009484566588" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="128.50298298509406" y1="480.68263730347803" x2="238.57549338568055" y2="454.9990515433412" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="279.0" y1="450.0" x2="378.0" y2="450.0" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<circle cx="110" cy="415" r="19" fill="#1c7ed6"/><text x="110" y="415" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">S1</text>
+<circle cx="110" cy="485" r="19" fill="#1c7ed6"/><text x="110" y="485" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">S2</text>
+<circle cx="260" cy="450" r="19" fill="#1c7ed6"/><text x="260" y="450" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">S3</text>
+<circle cx="400" cy="450" r="19" fill="#1c7ed6"/><text x="400" y="450" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">S4</text>
+<text x="480" y="410" font-size="14" fill="#212529" text-anchor="start" font-weight="normal" dominant-baseline="middle">S1: a := x + 2</text>
+<text x="480" y="436" font-size="14" fill="#212529" text-anchor="start" font-weight="normal" dominant-baseline="middle">S2: b := y + 4</text>
+<text x="480" y="462" font-size="14" fill="#212529" text-anchor="start" font-weight="normal" dominant-baseline="middle">S3: c := a + b</text>
+<text x="480" y="488" font-size="14" fill="#212529" text-anchor="start" font-weight="normal" dominant-baseline="middle">S4: d := c + b</text>
+<text x="480" y="515" font-size="13" fill="#e03131" text-anchor="start" font-weight="normal" dominant-baseline="middle">S1 和 S2 之间没有箭头，可以并发执行</text>
+</svg>
