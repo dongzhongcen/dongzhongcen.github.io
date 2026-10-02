@@ -297,6 +297,8 @@
 
   /* ---------------- 5. 写日记悬浮按钮 ---------------- */
   function writeButton() {
+    /* 只有博主模式（?owner=1 开启）才显示 */
+    if (!root.classList.contains('blog-owner')) return;
     if (location.pathname.replace(/\/+$/, '/') === writeUrl) return;
     var a = doc.createElement('a');
     a.id = 'fx-write';

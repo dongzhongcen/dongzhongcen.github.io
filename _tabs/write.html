@@ -4,6 +4,7 @@ icon: fas fa-pen
 order: 1
 description: 一键打开预填好模板的 GitHub 编辑器，写今天的学习日记。
 excerpt_separator: "<!--more-->"
+sitemap: false
 ---
 {%- assign today = site.time | date: "%Y-%m-%d" -%}
 {%- capture fallback_value -%}
@@ -26,7 +27,12 @@ tags: [日记]
 {%- endcapture -%}
 {%- assign repo_url = "https://github.com/" | append: site.github.username | append: "/" | append: site.github.username | append: ".github.io" -%}
 
-<div id="write-diary" class="write-box" data-repo="{{ repo_url }}" data-branch="main">
+<div class="write-visitor-note">
+  <p>这是博主的写作入口，用来快速新建一篇学习日记。</p>
+  <p class="text-muted">想看日记的话，请回到 <a href="{{ '/' | relative_url }}">首页</a> 或去 <a href="{{ '/archives/' | relative_url }}">归档</a> 看看。</p>
+</div>
+
+<div id="write-diary" class="write-box write-owner-only" data-repo="{{ repo_url }}" data-branch="main">
   <p class="write-lead">点下面的大按钮，会在新标签页打开 GitHub 的新建文件页面，<strong>文件名、日期和日记模板都已经填好</strong>，直接写正文就行。</p>
 
   <div class="write-fields">

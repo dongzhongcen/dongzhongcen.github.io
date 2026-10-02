@@ -1,4 +1,21 @@
-<!-- 自定义：景深背景、动效、写日记按钮（见 assets/js/effects.js） -->
+{% comment %}自定义：景深背景、动效、写日记按钮（见 assets/js/effects.js）。
+博主模式：访问任意页面加 ?owner=1 开启（存在 localStorage），?owner=0 关闭。只控制“写日记”入口是否显示，真正的权限由 GitHub 仓库写权限保证。{% endcomment %}
+<script>
+  (function () {
+    var KEY = 'blogOwner', d = document.documentElement;
+    try {
+      var m = /[?&]owner=([01])(?:&|$)/.exec(location.search);
+      if (m) {
+        if (m[1] === '1') { localStorage.setItem(KEY, '1'); } else { localStorage.removeItem(KEY); }
+        if (window.history && history.replaceState) {
+          var q = location.search.replace(/([?&])owner=[01](&|$)/, '$1').replace(/[?&]$/, '');
+          history.replaceState(null, '', location.pathname + q + location.hash);
+        }
+      }
+      if (localStorage.getItem(KEY) === '1') { d.classList.add('blog-owner'); }
+    } catch (e) {}
+  })();
+</script>
 <meta name="fx-layout" content="{{ page.layout }}">
 <link rel="stylesheet" href="{{ '/assets/css/fx.css' | relative_url }}">
 <script defer src="{{ '/assets/js/effects.js' | relative_url }}" data-write-url="{{ '/write/' | relative_url }}"></script>

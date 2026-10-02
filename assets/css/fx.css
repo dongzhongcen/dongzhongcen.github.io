@@ -115,6 +115,22 @@
 }
 @media print { #fx-depth, #fx-write, #fx-progress { display: none !important; } }
 
+/* ========== 博主模式：访客看不到“写日记”入口 ========== */
+html:not(.blog-owner) #sidebar .nav-item:has(> a.nav-link[href="/write/"]),
+html:not(.blog-owner) #sidebar a.nav-link[href="/write/"],
+html:not(.blog-owner) #fx-write,
+html:not(.blog-owner) .write-owner-only { display: none !important; }
+html.blog-owner .write-visitor-note { display: none !important; }
+.write-visitor-note {
+  margin: 1.5rem 0;
+  padding: 1rem 1.2rem;
+  border-radius: .6rem;
+  border-left: 4px solid #9a6bff;
+  background: var(--card-bg);
+  box-shadow: var(--card-shadow);
+}
+.write-visitor-note p:last-child { margin-bottom: 0; }
+
 /* ========== 写日记页 ========== */
 .write-box { max-width: 640px; }
 .write-lead { font-size: 1.05rem; }
