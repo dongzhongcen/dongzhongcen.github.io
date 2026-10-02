@@ -19,3 +19,7 @@
 <meta name="fx-layout" content="{{ page.layout }}">
 <link rel="stylesheet" href="{{ '/assets/css/fx.css' | relative_url }}">
 <script defer src="{{ '/assets/js/effects.js' | relative_url }}" data-write-url="{{ '/write/' | relative_url }}"></script>
+{% comment %}阅读量 + 点赞：stats_api 在 _config.yml 里配置，为空则不启用。{% endcomment %}
+{% if page.layout == 'post' and site.stats_api %}
+<script defer src="{{ '/assets/js/stats.js' | relative_url }}" data-api="{{ site.stats_api }}" data-post="{{ page.url | split: '/' | last }}"></script>
+{% endif %}

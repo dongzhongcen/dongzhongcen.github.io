@@ -25,6 +25,9 @@ description: >- # used by seo meta and the atom feed
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
 url: "https://dongzhongcen.github.io"
 
+# 阅读量 + 点赞后端（Cloudflare Worker + D1，按设备去重），留空则关闭
+stats_api: "https://blog-stats.xiangdongshe565.workers.dev"
+
 github:
   username: dongzhongcen # change to your GitHub username
 

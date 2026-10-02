@@ -183,3 +183,19 @@ html.blog-owner .write-visitor-note { display: none !important; }
 /* 项目卡片悬停时保持原来的文字颜色（Chirpy 默认会把链接悬停变成橙色） */
 .content a.repo-card:hover,
 .content a.repo-card:hover p { color: inherit !important; border-bottom-color: var(--main-border-color) !important; }
+
+/* ---- 阅读量 / 点赞 ---- */
+.stats-views { margin-left: .75rem; white-space: nowrap; }
+.stats-views em { font-style: normal; }
+.stats-like-wrap { display: flex; justify-content: center; margin: 2.5rem 0 1rem; }
+.stats-like {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .55rem 1.3rem; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--btn-border-color, #ddd); background: transparent;
+  color: var(--text-muted-color, #888); font-size: 1rem; transition: all .2s ease;
+}
+.stats-like:hover { border-color: #e03131; color: #e03131; }
+.stats-like.liked { background: #e03131; border-color: #e03131; color: #fff; }
+.stats-like-num { font-variant-numeric: tabular-nums; }
+.stats-like.pop i { animation: stats-pop .45s ease; }
+@keyframes stats-pop { 0% { transform: scale(1); } 40% { transform: scale(1.5); } 100% { transform: scale(1); } }
