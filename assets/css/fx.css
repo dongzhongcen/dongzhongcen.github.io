@@ -1,0 +1,169 @@
+/* ========== 博客自定义动效样式（配合 assets/js/effects.js） ========== */
+
+/* 景深背景画布：固定在最底层，不挡点击 */
+#fx-depth {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* 让背景透出来：页脚透明，侧边栏和顶栏半透明磨砂 */
+.fx-ready footer { background-color: transparent; }
+.fx-ready #sidebar {
+  background: color-mix(in srgb, var(--sidebar-bg) 86%, transparent);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.fx-ready #topbar-wrapper {
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+/* 打字光标 */
+.fx-caret {
+  display: inline-block;
+  width: 1px;
+  height: 1em;
+  margin-left: 2px;
+  vertical-align: -0.12em;
+  background: currentColor;
+  animation: fx-blink 1s steps(1) infinite;
+}
+.fx-caret.fx-caret-done { animation: none; opacity: 0; transition: opacity .6s; }
+@keyframes fx-blink { 50% { opacity: 0; } }
+
+/* 滚动渐显 */
+.fx-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .6s ease, transform .6s cubic-bezier(.2, .7, .2, 1), box-shadow .25s ease;
+}
+.fx-reveal.fx-in { opacity: 1; transform: none; }
+
+/* 首页文章卡片：悬停微微上浮 */
+#post-list .card-wrapper.fx-in { transition: transform .25s ease, box-shadow .25s ease; }
+#post-list .card-wrapper:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 26px rgb(0 0 0 / 10%), 0 0 0 1px var(--main-border-color);
+}
+
+/* 项目卡片：倾斜 + 跟随鼠标的高光 */
+.repo-card { background: var(--card-bg); position: relative; overflow: hidden; }
+.repo-card.fx-tilt { transform-style: preserve-3d; will-change: transform; }
+.repo-card.fx-tilt.fx-in { transition: transform .15s ease-out, box-shadow .25s ease; }
+.repo-card.fx-tilt::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .25s;
+  background: radial-gradient(circle at var(--fx-gx, 50%) var(--fx-gy, 50%), rgb(255 255 255 / 22%), transparent 55%);
+}
+.repo-card.fx-tilt:hover::after { opacity: 1; }
+.repo-card.fx-tilt:hover { box-shadow: 0 14px 30px rgb(0 0 0 / 14%) !important; }
+[data-bs-theme='dark'] .repo-card.fx-tilt::after {
+  background: radial-gradient(circle at var(--fx-gx, 50%) var(--fx-gy, 50%), rgb(255 255 255 / 8%), transparent 55%);
+}
+
+/* 阅读进度条 */
+#fx-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 1090;
+  pointer-events: none;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, #4f8cff, #9a6bff, #ff6fae);
+  box-shadow: 0 0 8px rgb(122 120 255 / 50%);
+}
+
+/* 写日记悬浮按钮（在“回到顶部”按钮上方） */
+#fx-write {
+  position: fixed;
+  z-index: 1;
+  right: 1rem;
+  bottom: calc(6rem - 1.375rem + 2.75rem + .75rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem;
+  height: 2.75rem;
+  min-width: 2.75rem;
+  padding: 0 .9rem;
+  border-radius: 1.375rem;
+  color: #fff !important;
+  font-size: .9rem;
+  text-decoration: none !important;
+  border-bottom: 0 !important;
+  background: linear-gradient(135deg, #4f8cff, #9a6bff);
+  box-shadow: 0 6px 18px rgb(79 140 255 / 35%);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+#fx-write:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgb(79 140 255 / 45%); }
+#fx-write span { white-space: nowrap; }
+@media (max-width: 849px) {
+  #fx-write { padding: 0; width: 2.75rem; }
+  #fx-write span { display: none; }
+}
+@media (min-width: 850px) {
+  #fx-write { right: 5%; bottom: calc(5rem - 1.375rem + 2.75rem + .75rem); }
+}
+@media print { #fx-depth, #fx-write, #fx-progress { display: none !important; } }
+
+/* ========== 写日记页 ========== */
+.write-box { max-width: 640px; }
+.write-lead { font-size: 1.05rem; }
+.write-fields { display: grid; gap: .35rem; margin: 1.5rem 0; }
+.write-fields label { font-weight: 600; margin-top: .6rem; color: var(--heading-color); }
+.write-fields input {
+  width: 100%;
+  padding: .55rem .75rem;
+  border-radius: .5rem;
+  border: 1px solid var(--btn-border-color, #ddd);
+  background: var(--card-bg);
+  color: var(--text-color);
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+.write-fields input:focus { border-color: #7a8cff; box-shadow: 0 0 0 3px rgb(122 140 255 / 20%); }
+.write-slug-row { display: flex; align-items: center; gap: .35rem; }
+.write-slug-row input { flex: 1; min-width: 0; }
+.write-date, .write-ext { font-family: var(--bs-font-monospace, monospace); color: var(--text-muted-color); white-space: nowrap; }
+.write-go {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  padding: 1rem 2.2rem;
+  margin-top: .5rem;
+  border-radius: 999px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff !important;
+  text-decoration: none !important;
+  border-bottom: 0 !important;
+  background: linear-gradient(135deg, #4f8cff, #9a6bff 60%, #ff6fae);
+  background-size: 160% 160%;
+  box-shadow: 0 10px 28px rgb(108 115 255 / 35%);
+  transition: transform .2s ease, box-shadow .2s ease, background-position .6s ease;
+}
+.write-go:hover { transform: translateY(-2px) scale(1.02); background-position: 100% 50%; box-shadow: 0 14px 34px rgb(108 115 255 / 45%); }
+.write-go:active { transform: scale(.98); }
+.write-file { margin-top: .8rem; font-size: .9rem; }
+.write-steps { margin-top: 2.2rem; }
+.write-steps h2 { font-size: 1.2rem; }
+
+/* 减少动态效果：全部静止 */
+@media (prefers-reduced-motion: reduce) {
+  .fx-reveal { opacity: 1 !important; transform: none !important; }
+  .fx-caret { animation: none; }
+  #fx-write, .write-go, #post-list .card-wrapper, .repo-card { transition: none !important; }
+}
+
+/* 项目卡片悬停时保持原来的文字颜色（Chirpy 默认会把链接悬停变成橙色） */
+.content a.repo-card:hover,
+.content a.repo-card:hover p { color: inherit !important; border-bottom-color: var(--main-border-color) !important; }

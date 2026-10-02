@@ -1,0 +1,67 @@
+---
+title: 写日记
+icon: fas fa-pen
+order: 1
+description: 一键打开预填好模板的 GitHub 编辑器，写今天的学习日记。
+excerpt_separator: "<!--more-->"
+---
+{%- assign today = site.time | date: "%Y-%m-%d" -%}
+{%- capture fallback_value -%}
+---
+title: "{{ today }} 学习日记"
+date: {{ site.time | date: "%Y-%m-%d %H:%M:%S %z" }}
+categories: [学习日记]
+tags: [日记]
+---
+
+## 今天做了什么
+
+## 学到的新概念
+
+## 卡住的地方和怎么解决的
+
+## 还没想明白的问题
+
+## 明天想做什么
+{%- endcapture -%}
+{%- assign repo_url = "https://github.com/" | append: site.github.username | append: "/" | append: site.github.username | append: ".github.io" -%}
+
+<div id="write-diary" class="write-box" data-repo="{{ repo_url }}" data-branch="main">
+  <p class="write-lead">点下面的大按钮，会在新标签页打开 GitHub 的新建文件页面，<strong>文件名、日期和日记模板都已经填好</strong>，直接写正文就行。</p>
+
+  <div class="write-fields">
+    <label for="write-title">标题</label>
+    <input id="write-title" type="text" autocomplete="off" placeholder="{{ today }} 学习日记">
+
+    <label for="write-slug">文件名</label>
+    <div class="write-slug-row">
+      <span class="write-date" id="write-date">{{ today }}-</span>
+      <input id="write-slug" type="text" autocomplete="off" placeholder="diary" spellcheck="false">
+      <span class="write-ext">.md</span>
+    </div>
+    <small class="text-muted">文件名只能用英文、数字和短横线（例如 <code>java-threads</code>），不填就是 <code>diary</code>。同一天写第二篇时记得换一个。</small>
+
+    <label for="write-tags">标签</label>
+    <input id="write-tags" type="text" autocomplete="off" placeholder="日记" value="日记">
+    <small class="text-muted">多个标签用逗号隔开，例如 <code>日记, python</code>。</small>
+  </div>
+
+  <a id="write-go" class="write-go" target="_blank" rel="noopener"
+     href="{{ repo_url }}/new/main?filename=_posts/{{ today }}-diary.md&value={{ fallback_value | url_encode }}">
+    <i class="fas fa-pen-nib"></i> 开始写今天的日记
+  </a>
+  <p class="write-file text-muted">将创建：<code id="write-path">_posts/{{ today }}-diary.md</code></p>
+
+  <div class="write-steps">
+    <h2>怎么用</h2>
+    <ol>
+      <li>点上面的按钮（需要先在浏览器里登录 GitHub）。</li>
+      <li>在打开的页面里把每个小标题下面的内容写完，用不上的小标题可以删掉。</li>
+      <li>写完点右上角绿色的 <strong>Commit changes</strong>，再点一次确认。</li>
+      <li>一两分钟后自动上线。可以在 <a href="{{ repo_url }}/actions" target="_blank" rel="noopener">Actions 页面</a> 看进度，出现绿色对勾就好了。</li>
+    </ol>
+    <p class="text-muted">想改已经发布的日记：打开那篇文章，点文章底部的“编辑”链接。</p>
+  </div>
+</div>
+
+<script src="{{ '/assets/js/write.js' | relative_url }}"></script>

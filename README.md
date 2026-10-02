@@ -17,7 +17,8 @@
 - **项目页**：构建时通过 GitHub API 拉取全部公开仓库（`_data/repos.json`），按最近更新排序展示名称、描述、语言和 star 数；浏览器端再尝试实时刷新一次。
 - **自动发布**：推送到 `main` 后由 `.github/workflows/pages-deploy.yml` 构建发布，每天北京时间 6:17 也会自动重建一次，保证项目页同步。
 - **中文界面与深色模式**：`lang: zh-CN`，时区 `Asia/Shanghai`，支持浅色 / 深色切换和站内搜索。
-- **在线编辑**：每篇文章页面有“编辑”链接，直接跳到 GitHub 上修改。
+- **在线编辑**：每篇文章页面有“编辑”链接，直接跳到 GitHub 上修改；“写日记”页一键打开预填好模板的新建页面。
+- **动态效果**：景深粒子背景（随鼠标和滚动视差）、标语打字效果、卡片渐显和倾斜、文章阅读进度条；系统开启“减少动态效果”时自动静止。
 
 ## 项目结构
 
@@ -25,8 +26,10 @@
 .
 ├── _config.yml                    # 站点配置（标题、头像、语言、时区等）
 ├── _posts/                        # 日记文章，文件名 YYYY-MM-DD-标题.md
-├── _tabs/                         # 侧边栏页面：项目、分类、标签、归档、关于
+├── _tabs/                         # 侧边栏页面：写日记、项目、分类、标签、归档、关于
+│   ├── write.html                 # 写日记页（一键打开 GitHub 新建文件页面）
 │   └── projects.html              # 项目页（读取 _data/repos.json）
+├── _includes/metadata-hook.html   # 在 <head> 里引入自定义样式和脚本
 ├── _data/
 │   ├── repos.json                 # GitHub 公开仓库列表（构建时自动更新）
 │   ├── contact.yml                # 侧边栏联系方式
@@ -34,7 +37,11 @@
 ├── _plugins/posts-lastmod-hook.rb # 根据 git 记录生成文章最后修改时间
 ├── assets/
 │   ├── img/avatar.jpg             # 侧边栏头像
-│   └── js/repos.js                # 项目页浏览器端刷新
+│   ├── css/fx.css                 # 动效和写日记页样式
+│   └── js/
+│       ├── repos.js               # 项目页浏览器端刷新
+│       ├── write.js               # 生成写日记链接（北京时间）
+│       └── effects.js             # 景深背景、打字、渐显、进度条、写日记按钮
 ├── .github/workflows/pages-deploy.yml  # 构建与发布流程
 ├── Gemfile                        # jekyll-theme-chirpy 依赖
 └── index.html                     # 首页
@@ -43,6 +50,10 @@
 ## 快速开始
 
 ### 写一篇新日记
+
+**最快的方式**：打开博客的 [写日记](https://dongzhongcen.github.io/write/) 页面（侧边栏第一项，或任意页面右下角的“写日记”按钮），点 **开始写今天的日记**。会在 GitHub 上打开新建文件页面，文件名 `_posts/今天日期-diary.md`、日期和下面的模板都已经填好，写完点 **Commit changes**，一两分钟后自动上线（需要先在浏览器里登录 GitHub）。
+
+也可以手动新建：
 
 1. 打开 `_posts` 文件夹，点 **Add file → Create new file**。
 2. 文件名按 `年-月-日-英文或拼音标题.md`，例如 `2026-10-03-learned-java-threads.md`。
