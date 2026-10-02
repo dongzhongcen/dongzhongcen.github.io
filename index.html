@@ -1,20 +1,46 @@
 ---
-layout: default
+layout: page
+description: "每天学一点，写下来"
 ---
-<section class="hero">
-  <h1>你好，我是 Marianna 👋</h1>
-  <p>这里记录我每天学到的东西和感想，也展示我在 GitHub 上的项目。</p>
-</section>
 
-<h2>最近的日记</h2>
-<ul class="post-list">
-  {% for post in site.posts limit:5 %}
-  <li><span class="date">{{ post.date | date: "%Y-%m-%d" }}</span> <a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
-  {% endfor %}
+{% for post in paginator.posts %}
+<div class="post-preview">
+    <a href="{{ post.url | prepend: site.baseurl }}">
+        <h2 class="post-title">
+            {{ post.title }}
+        </h2>
+        {% if post.subtitle %}
+        <h3 class="post-subtitle">
+            {{ post.subtitle }}
+        </h3>
+        {% endif %}
+        <div class="post-content-preview">
+            {% if post.lang == 'en' %}
+                {{ post.content | strip_html | truncate:300 }}
+            {% else %}
+                {{ post.content | strip_html | truncate:200 }}
+            {% endif %}
+        </div>
+    </a>
+    <p class="post-meta">
+        {% if post.author %}{{ post.author }}{% else %}Marianna{% endif %} 发布于 {{ post.date | date: "%Y 年 %-m 月 %-d 日" }}
+    </p>
+</div>
+<hr>
+{% endfor %}
+
+<!-- Pager -->
+{% if paginator.total_pages > 1 %}
+<ul class="pager">
+    {% if paginator.previous_page %}
+    <li class="previous">
+        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; 较新的日记</a>
+    </li>
+    {% endif %}
+    {% if paginator.next_page %}
+    <li class="next">
+        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">更早的日记 &rarr;</a>
+    </li>
+    {% endif %}
 </ul>
-<p><a href="{{ '/blog/' | relative_url }}">查看全部日记 →</a></p>
-
-<h2>最近更新的项目</h2>
-<div id="repos" class="repo-grid" data-user="{{ site.github_username }}" data-limit="6"><p class="muted">加载中…</p></div>
-<p><a href="{{ '/projects/' | relative_url }}">查看全部项目 →</a></p>
-<script src="{{ '/assets/js/repos.js' | relative_url }}"></script>
+{% endif %}

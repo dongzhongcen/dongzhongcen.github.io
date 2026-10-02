@@ -1,9 +1,10 @@
 ---
-layout: default
-title: 项目
-permalink: /projects/
+layout: page
+title: "项目"
+description: "我在 GitHub 上的全部公开项目"
+header-img: "img/home-bg-geek.jpg"
 ---
-<h1>我的 GitHub 项目</h1>
-<p class="muted">自动从 GitHub 读取全部公开仓库，按最近更新排序。</p>
-<div id="repos" class="repo-grid" data-user="{{ site.github_username }}"><p class="muted">加载中…</p></div>
-<script src="{{ '/assets/js/repos.js' | relative_url }}"></script>
+
+<p class="text-muted">自动从 GitHub 读取全部公开仓库，按最近更新排序。</p>
+<div id="repos" class="repo-grid" data-user="{{ site.github_username }}"><p class="text-muted">加载中…</p></div>
+<script src="{{ '/js/repos.js' | prepend: site.baseurl }}"></script>
