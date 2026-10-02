@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 305" width="760" height="305" font-family="'PingFang SC','Microsoft YaHei','Noto Sans CJK SC','Noto Sans SC',sans-serif">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#212529"/></marker>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e03131"/></marker></defs>
+<rect width="760" height="305" rx="12" fill="#ffffff"/>
+<text x="380" y="28" font-size="18" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">并行（同一时刻） vs 并发（同一时间间隔）</text>
+<text x="20" y="65" font-size="14" fill="#212529" text-anchor="start" font-weight="bold" dominant-baseline="middle">并行：两个 CPU，A 和 B 在同一时刻真正同时运行</text>
+<text x="80" y="100" font-size="13" fill="#212529" text-anchor="end" font-weight="normal" dominant-baseline="middle">CPU 1</text>
+<text x="80" y="135" font-size="13" fill="#212529" text-anchor="end" font-weight="normal" dominant-baseline="middle">CPU 2</text>
+<rect x="95" y="87" width="560" height="26" rx="4" fill="#1c7ed6" stroke="none" stroke-width="1.5"/><text x="375.0" y="100" font-size="13" fill="#fff" text-anchor="middle" font-weight="normal" dominant-baseline="middle">程序 A</text>
+<rect x="95" y="122" width="560" height="26" rx="4" fill="#2f9e44" stroke="none" stroke-width="1.5"/><text x="375.0" y="135" font-size="13" fill="#fff" text-anchor="middle" font-weight="normal" dominant-baseline="middle">程序 B</text>
+<text x="20" y="185" font-size="14" fill="#212529" text-anchor="start" font-weight="bold" dominant-baseline="middle">并发：只有一个 CPU，A、B、C 轮流执行（宏观上同时，微观上交替）</text>
+<text x="80" y="222" font-size="13" fill="#212529" text-anchor="end" font-weight="normal" dominant-baseline="middle">CPU</text>
+<rect x="95" y="209" width="60" height="26" rx="4" fill="#1c7ed6" stroke="none" stroke-width="1.5"/><text x="125.0" y="222" font-size="13" fill="#fff" text-anchor="middle" font-weight="normal" dominant-baseline="middle">A</text>
+<rect x="157.2" y="209" width="60" height="26" rx="4" fill="#2f9e44" stroke="none" stroke-width="1.5"/><text x="187.2" y="222" font-size="13" fill="#fff" text-anchor="middle" font-weight="normal" dominant-baseline="middle">B</text>
+<rect x="219.39999999999998" y="209" width="60" height="26" rx="4" fill="#f08c00" stroke="none" stroke-width="1.5"/><text x="249.39999999999998" y="222" font-size="13" fill="#fff" text-anchor="middle" font-weight="normal" dominant-baseline="middle">C</text>
+<rect x="281.59999999999997" y="209" width="60" height="26" rx="4" fill="#1c7ed6" stroke="none" stroke-width="1.5"/><text x="311.59999999999997" y="222" font-size="13" fill="#fff" text-anchor="middle" font-weight="normal" dominant-baseline="middle">A</text>
+<rect x="343.79999999999995" y="209" width="60" height="26" rx="4" fill="#2f9e44" stroke="none" stroke-width="1.5"/><text x="373.79999999999995" y="222" font-size="13" fill="#fff" text-anchor="middle" font-weight="normal" dominant-baseline="middle">B</text>
+<rect x="405.99999999999994" y="209" width="60" height="26" rx="4" fill="#f08c00" stroke="none" stroke-width="1.5"/><text x="435.99999999999994" y="222" font-size="13" fill="#fff" text-anchor="middle" font-weight="normal" dominant-baseline="middle">C</text>
+<rect x="468.19999999999993" y="209" width="60" height="26" rx="4" fill="#1c7ed6" stroke="none" stroke-width="1.5"/><text x="498.19999999999993" y="222" font-size="13" fill="#fff" text-anchor="middle" font-weight="normal" dominant-baseline="middle">A</text>
+<rect x="530.4" y="209" width="60" height="26" rx="4" fill="#2f9e44" stroke="none" stroke-width="1.5"/><text x="560.4" y="222" font-size="13" fill="#fff" text-anchor="middle" font-weight="normal" dominant-baseline="middle">B</text>
+<rect x="592.6" y="209" width="60" height="26" rx="4" fill="#f08c00" stroke="none" stroke-width="1.5"/><text x="622.6" y="222" font-size="13" fill="#fff" text-anchor="middle" font-weight="normal" dominant-baseline="middle">C</text>
+<line x1="95" y1="255" x2="670" y2="255" stroke="#868e96" stroke-width="1.6" marker-end="url(#ar)"/>
+<text x="680" y="255" font-size="12" fill="#868e96" text-anchor="start" font-weight="normal" dominant-baseline="middle">时间</text>
+<text x="380" y="285" font-size="14" fill="#e03131" text-anchor="middle" font-weight="bold" dominant-baseline="middle">单处理机系统中只能并发，不能并行</text>
+</svg>

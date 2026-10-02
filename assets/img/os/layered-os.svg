@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 340" width="660" height="340" font-family="'PingFang SC','Microsoft YaHei','Noto Sans CJK SC','Noto Sans SC',sans-serif">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#212529"/></marker>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e03131"/></marker></defs>
+<rect width="660" height="340" rx="12" fill="#ffffff"/>
+<text x="320" y="28" font-size="18" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">分层式结构：低层之上构建高层</text>
+<rect x="80" y="55" width="360" height="44" rx="6" fill="#d0ebff" stroke="none" stroke-width="1.5"/>
+<text x="260" y="77" font-size="15" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">第 N 层：用户接口</text>
+<rect x="80" y="105" width="360" height="44" rx="6" fill="#e7f5ff" stroke="none" stroke-width="1.5"/>
+<text x="260" y="127" font-size="15" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">……</text>
+<rect x="80" y="155" width="360" height="44" rx="6" fill="#a5d8ff" stroke="none" stroke-width="1.5"/>
+<text x="260" y="177" font-size="15" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">第 2 层</text>
+<rect x="80" y="205" width="360" height="44" rx="6" fill="#74c0fc" stroke="none" stroke-width="1.5"/>
+<text x="260" y="227" font-size="15" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">第 1 层</text>
+<rect x="80" y="255" width="360" height="44" rx="6" fill="#495057" stroke="none" stroke-width="1.5"/>
+<text x="260" y="277" font-size="15" fill="#fff" text-anchor="middle" font-weight="normal" dominant-baseline="middle">第 0 层：硬件</text>
+<line x1="260" y1="105" x2="260" y2="99" stroke="#212529" stroke-width="0"/>
+<line x1="260" y1="155" x2="260" y2="149" stroke="#212529" stroke-width="0"/>
+<line x1="260" y1="205" x2="260" y2="199" stroke="#212529" stroke-width="0"/>
+<line x1="260" y1="255" x2="260" y2="249" stroke="#212529" stroke-width="0"/>
+<text x="470" y="110" font-size="14" fill="#e03131" text-anchor="start" font-weight="normal" dominant-baseline="middle">每层只调用</text>
+<text x="470" y="132" font-size="14" fill="#e03131" text-anchor="start" font-weight="normal" dominant-baseline="middle">紧邻它的下一层</text>
+<text x="470" y="190" font-size="13" fill="#212529" text-anchor="start" font-weight="normal" dominant-baseline="middle">优点：易保证正确性，</text>
+<text x="470" y="210" font-size="13" fill="#212529" text-anchor="start" font-weight="normal" dominant-baseline="middle">易维护、易扩充</text>
+<text x="470" y="240" font-size="13" fill="#212529" text-anchor="start" font-weight="normal" dominant-baseline="middle">缺点：层层调用，</text>
+<text x="470" y="260" font-size="13" fill="#212529" text-anchor="start" font-weight="normal" dominant-baseline="middle">系统效率低</text>
+<text x="320" y="320" font-size="13" fill="#868e96" text-anchor="middle" font-weight="normal" dominant-baseline="middle">例子：THE、Multics</text>
+</svg>

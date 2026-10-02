@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 375" width="760" height="375" font-family="'PingFang SC','Microsoft YaHei','Noto Sans CJK SC','Noto Sans SC',sans-serif">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#212529"/></marker>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e03131"/></marker></defs>
+<rect width="760" height="375" rx="12" fill="#ffffff"/>
+<text x="380" y="28" font-size="18" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">单道批处理 vs 多道批处理（CPU 和 I/O 的使用情况）</text>
+<text x="20" y="70" font-size="14" fill="#212529" text-anchor="start" font-weight="bold" dominant-baseline="middle">（a）单道：一次只有一道程序，做 I/O 时 CPU 只能干等</text>
+<text x="60" y="108" font-size="14" fill="#212529" text-anchor="end" font-weight="normal" dominant-baseline="middle">CPU</text>
+<text x="60" y="146" font-size="14" fill="#212529" text-anchor="end" font-weight="normal" dominant-baseline="middle">I/O</text>
+<rect x="80" y="95" width="72" height="26" rx="4" fill="#1c7ed6" stroke="none" stroke-width="1.5"/><text x="116.0" y="108" font-size="13" fill="#fff" text-anchor="middle" font-weight="normal" dominant-baseline="middle">程序A</text>
+<rect x="80" y="133" width="72" height="26" rx="4" fill="#f1f3f5" stroke="none" stroke-width="1.5"/>
+<rect x="152" y="133" width="72" height="26" rx="4" fill="#fab005" stroke="none" stroke-width="1.5"/><text x="188.0" y="146" font-size="13" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">程序A I/O</text>
+<rect x="152" y="95" width="72" height="26" rx="4" fill="#ffe3e3" stroke="#e03131" stroke-width="1.5" stroke-dasharray="4 3"/>
+<text x="188" y="108" font-size="12" fill="#e03131" text-anchor="middle" font-weight="normal" dominant-baseline="middle">CPU 空闲</text>
+<rect x="224" y="95" width="72" height="26" rx="4" fill="#1c7ed6" stroke="none" stroke-width="1.5"/><text x="260.0" y="108" font-size="13" fill="#fff" text-anchor="middle" font-weight="normal" dominant-baseline="middle">程序A</text>
+<rect x="224" y="133" width="72" height="26" rx="4" fill="#f1f3f5" stroke="none" stroke-width="1.5"/>
+<rect x="296" y="95" width="72" height="26" rx="4" fill="#1c7ed6" stroke="none" stroke-width="1.5"/><text x="332.0" y="108" font-size="13" fill="#fff" text-anchor="middle" font-weight="normal" dominant-baseline="middle">程序B</text>
+<rect x="296" y="133" width="72" height="26" rx="4" fill="#f1f3f5" stroke="none" stroke-width="1.5"/>
+<rect x="368" y="133" width="72" height="26" rx="4" fill="#fab005" stroke="none" stroke-width="1.5"/><text x="404.0" y="146" font-size="13" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">程序B I/O</text>
+<rect x="368" y="95" width="72" height="26" rx="4" fill="#ffe3e3" stroke="#e03131" stroke-width="1.5" stroke-dasharray="4 3"/>
+<text x="404" y="108" font-size="12" fill="#e03131" text-anchor="middle" font-weight="normal" dominant-baseline="middle">CPU 空闲</text>
+<rect x="440" y="95" width="72" height="26" rx="4" fill="#1c7ed6" stroke="none" stroke-width="1.5"/><text x="476.0" y="108" font-size="13" fill="#fff" text-anchor="middle" font-weight="normal" dominant-baseline="middle">程序B</text>
+<rect x="440" y="133" width="72" height="26" rx="4" fill="#f1f3f5" stroke="none" stroke-width="1.5"/>
+<line x1="80" y1="175" x2="532" y2="175" stroke="#868e96" stroke-width="1.6" marker-end="url(#ar)"/>
+<text x="542" y="175" font-size="12" fill="#868e96" text-anchor="start" font-weight="normal" dominant-baseline="middle">时间</text>
+<text x="20" y="215" font-size="14" fill="#212529" text-anchor="start" font-weight="bold" dominant-baseline="middle">（b）多道：A 做 I/O 时，CPU 转去运行 B、C，资源利用率高</text>
+<text x="60" y="253" font-size="14" fill="#212529" text-anchor="end" font-weight="normal" dominant-baseline="middle">CPU</text>
+<text x="60" y="291" font-size="14" fill="#212529" text-anchor="end" font-weight="normal" dominant-baseline="middle">I/O</text>
+<rect x="80" y="240" width="72" height="26" rx="4" fill="#1c7ed6" stroke="none" stroke-width="1.5"/><text x="116.0" y="253" font-size="13" fill="#fff" text-anchor="middle" font-weight="normal" dominant-baseline="middle">程序A</text>
+<rect x="152" y="240" width="72" height="26" rx="4" fill="#1c7ed6" stroke="none" stroke-width="1.5"/><text x="188.0" y="253" font-size="13" fill="#fff" text-anchor="middle" font-weight="normal" dominant-baseline="middle">程序B</text>
+<rect x="224" y="240" width="72" height="26" rx="4" fill="#1c7ed6" stroke="none" stroke-width="1.5"/><text x="260.0" y="253" font-size="13" fill="#fff" text-anchor="middle" font-weight="normal" dominant-baseline="middle">程序C</text>
+<rect x="296" y="240" width="72" height="26" rx="4" fill="#1c7ed6" stroke="none" stroke-width="1.5"/><text x="332.0" y="253" font-size="13" fill="#fff" text-anchor="middle" font-weight="normal" dominant-baseline="middle">程序A</text>
+<rect x="368" y="240" width="72" height="26" rx="4" fill="#1c7ed6" stroke="none" stroke-width="1.5"/><text x="404.0" y="253" font-size="13" fill="#fff" text-anchor="middle" font-weight="normal" dominant-baseline="middle">程序B</text>
+<rect x="440" y="240" width="72" height="26" rx="4" fill="#1c7ed6" stroke="none" stroke-width="1.5"/><text x="476.0" y="253" font-size="13" fill="#fff" text-anchor="middle" font-weight="normal" dominant-baseline="middle">程序C</text>
+<rect x="152" y="278" width="108" height="26" rx="4" fill="#fab005" stroke="none" stroke-width="1.5"/><text x="206.0" y="291" font-size="13" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">A 的 I/O</text>
+<rect x="260" y="278" width="72" height="26" rx="4" fill="#fab005" stroke="none" stroke-width="1.5"/><text x="296.0" y="291" font-size="13" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">B 的 I/O</text>
+<rect x="332" y="278" width="108" height="26" rx="4" fill="#fab005" stroke="none" stroke-width="1.5"/><text x="386.0" y="291" font-size="13" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">C 的 I/O</text>
+<line x1="80" y1="320" x2="532" y2="320" stroke="#868e96" stroke-width="1.6" marker-end="url(#ar)"/>
+<text x="542" y="320" font-size="12" fill="#868e96" text-anchor="start" font-weight="normal" dominant-baseline="middle">时间</text>
+<text x="380" y="352" font-size="13" fill="#e03131" text-anchor="middle" font-weight="normal" dominant-baseline="middle">同样的时间里，多道系统完成了更多工作 → 吞吐量更大；但单个作业要排队，平均周转时间更长</text>
+</svg>

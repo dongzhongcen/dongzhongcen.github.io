@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 380" width="700" height="380" font-family="'PingFang SC','Microsoft YaHei','Noto Sans CJK SC','Noto Sans SC',sans-serif">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#212529"/></marker>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e03131"/></marker></defs>
+<rect width="700" height="380" rx="12" fill="#ffffff"/>
+<text x="330" y="30" font-size="19" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">OS 对计算机资源的多层抽象（虚机器）</text>
+<rect x="60" y="60" width="420" height="52" rx="10" fill="#f1f3f5" stroke="none" stroke-width="1.5"/>
+<text x="270" y="86" font-size="16" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">用户</text>
+<rect x="60" y="122" width="420" height="52" rx="10" fill="#d0ebff" stroke="none" stroke-width="1.5"/>
+<text x="270" y="148" font-size="16" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">窗口软件（面向用户）</text>
+<rect x="60" y="184" width="420" height="52" rx="10" fill="#a5d8ff" stroke="none" stroke-width="1.5"/>
+<text x="270" y="210" font-size="16" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">文件管理软件</text>
+<rect x="60" y="246" width="420" height="52" rx="10" fill="#74c0fc" stroke="none" stroke-width="1.5"/>
+<text x="270" y="272" font-size="16" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">I/O 设备管理软件（第一层抽象）</text>
+<rect x="60" y="308" width="420" height="52" rx="10" fill="#495057" stroke="none" stroke-width="1.5"/>
+<text x="270" y="334" font-size="16" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">裸机（硬件）</text>
+<line x1="530" y1="345" x2="530" y2="75" stroke="#e03131" stroke-width="3" marker-end="url(#arr)"/>
+<text x="560" y="150" font-size="15" fill="#e03131" text-anchor="start" font-weight="normal" dominant-baseline="middle">抽象层次越高</text>
+<text x="560" y="175" font-size="15" fill="#e03131" text-anchor="start" font-weight="normal" dominant-baseline="middle">接口功能越强</text>
+<text x="560" y="200" font-size="15" fill="#e03131" text-anchor="start" font-weight="normal" dominant-baseline="middle">用户使用越方便</text>
+<text x="560" y="260" font-size="13" fill="#868e96" text-anchor="start" font-weight="normal" dominant-baseline="middle">每覆盖一层软件，</text>
+<text x="560" y="280" font-size="13" fill="#868e96" text-anchor="start" font-weight="normal" dominant-baseline="middle">就得到一台功能更强</text>
+<text x="560" y="300" font-size="13" fill="#868e96" text-anchor="start" font-weight="normal" dominant-baseline="middle">的“扩充机器”</text>
+</svg>
