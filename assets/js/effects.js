@@ -194,8 +194,9 @@
   function typing() {
     var el = doc.querySelector('#sidebar .site-subtitle');
     if (!el) return;
-    var text = el.textContent.trim();
-    if (!text) return;
+    /* 副标题：每次打开随机生成 3-9 个 z */
+    var text = 'z'.repeat(3 + Math.floor(Math.random() * 7));
+    el.textContent = text;
     el.setAttribute('aria-label', text);
     var key = 'fx-typed';
     var seen = false;
