@@ -1,0 +1,20 @@
+---
+layout: default
+---
+<section class="hero">
+  <h1>你好，我是 Marianna 👋</h1>
+  <p>这里记录我每天学到的东西和感想，也展示我在 GitHub 上的项目。</p>
+</section>
+
+<h2>最近的日记</h2>
+<ul class="post-list">
+  {% for post in site.posts limit:5 %}
+  <li><span class="date">{{ post.date | date: "%Y-%m-%d" }}</span> <a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+  {% endfor %}
+</ul>
+<p><a href="{{ '/blog/' | relative_url }}">查看全部日记 →</a></p>
+
+<h2>最近更新的项目</h2>
+<div id="repos" class="repo-grid" data-user="{{ site.github_username }}" data-limit="6"><p class="muted">加载中…</p></div>
+<p><a href="{{ '/projects/' | relative_url }}">查看全部项目 →</a></p>
+<script src="{{ '/assets/js/repos.js' | relative_url }}"></script>

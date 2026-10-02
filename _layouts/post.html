@@ -1,0 +1,9 @@
+---
+layout: default
+---
+<article class="post">
+  <h1>{{ page.title }}</h1>
+  <p class="meta">{{ page.date | date: "%Y 年 %m 月 %d 日" }}{% if page.tags.size > 0 %} · {% for t in page.tags %}<span class="tag">{{ t }}</span>{% endfor %}{% endif %}</p>
+  <div class="content">{{ content }}</div>
+  <p><a href="{{ '/blog/' | relative_url }}">← 返回全部日记</a></p>
+</article>

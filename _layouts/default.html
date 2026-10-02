@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | truncate: 150 }}">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  {% feed_meta %}
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      <nav>
+        <a href="{{ '/' | relative_url }}">首页</a>
+        <a href="{{ '/blog/' | relative_url }}">日记</a>
+        <a href="{{ '/projects/' | relative_url }}">项目</a>
+        <a href="https://github.com/{{ site.github_username }}">GitHub</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    {{ content }}
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">© {{ site.time | date: '%Y' }} {{ site.author }} · <a href="{{ '/feed.xml' | relative_url }}">RSS</a></div>
+  </footer>
+</body>
+</html>

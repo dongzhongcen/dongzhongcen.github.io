@@ -1,0 +1,15 @@
+---
+layout: default
+title: 日记
+permalink: /blog/
+---
+<h1>全部日记</h1>
+{% assign by_year = site.posts | group_by_exp: "p", "p.date | date: '%Y'" %}
+{% for year in by_year %}
+<h2>{{ year.name }}</h2>
+<ul class="post-list">
+  {% for post in year.items %}
+  <li><span class="date">{{ post.date | date: "%m-%d" }}</span> <a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+  {% endfor %}
+</ul>
+{% endfor %}

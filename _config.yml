@@ -1,0 +1,14 @@
+title: "Marianna 的博客"
+description: "每天学到的东西、感想，以及我的 GitHub 项目"
+author: dongzhongcen
+github_username: dongzhongcen
+url: "https://dongzhongcen.github.io"
+baseurl: ""
+lang: zh-CN
+timezone: Asia/Shanghai
+permalink: /:year/:month/:day/:title/
+markdown: kramdown
+plugins:
+  - jekyll-feed
+exclude:
+  - README.md
