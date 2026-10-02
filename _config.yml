@@ -84,9 +84,9 @@ netease_comment: false
 # Sidebar settings
 sidebar: true # whether or not using Sidebar.
 sidebar-about-description: "每天学一点，写下来。<br>这里是我的学习日记和项目。"
-sidebar-avatar: https://github.com/dongzhongcen.png # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: /img/avatar.jpg # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 # Featured Tags
 featured-tags: true
-featured-condition-size: 1
+featured-condition-size: 0

@@ -5,6 +5,15 @@ description: "我在 GitHub 上的全部公开项目"
 header-img: "img/home-bg-geek.jpg"
 ---
 
-<p class="text-muted">自动从 GitHub 读取全部公开仓库，按最近更新排序。</p>
-<div id="repos" class="repo-grid" data-user="{{ site.github_username }}"><p class="text-muted">加载中…</p></div>
+<p class="text-muted">自动同步我在 GitHub 上的全部公开仓库，按最近更新排序。</p>
+{% assign repos = site.github.public_repositories | where: "fork", false | sort: "pushed_at" | reverse %}
+<div id="repos" class="repo-grid" data-user="{{ site.github_username }}">
+{% for r in repos %}{% unless r.name == "dongzhongcen.github.io" %}
+  <a class="repo" href="{{ r.html_url }}">
+    <h3>{{ r.name }}</h3>
+    <p>{% if r.description %}{{ r.description | escape }}{% else %}<span class="text-muted">暂无描述</span>{% endif %}</p>
+    <div class="repo-meta">{% if r.language %}<span>{{ r.language }}</span>{% endif %}<span>★ {{ r.stargazers_count }}</span><span>更新于 {{ r.pushed_at | date: "%Y-%m-%d" }}</span></div>
+  </a>
+{% endunless %}{% endfor %}
+</div>
 <script src="{{ '/js/repos.js' | prepend: site.baseurl }}"></script>
