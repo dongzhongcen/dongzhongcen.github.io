@@ -65,7 +65,7 @@
 ---
 title: "今天学了什么"
 date: 2026-10-03 21:00:00 +0800
-categories: [学习日记]
+categories: []  # 填主题，比如 [操作系统]
 tags: [python, fastapi]
 ---
 

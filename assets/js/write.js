@@ -36,7 +36,7 @@
       '---',
       'title: ' + yamlString(opts.title),
       'date: ' + opts.date + ' ' + opts.time + ' +0800',
-      'categories: [学习日记]',
+      'categories: []  # 填主题，比如 [操作系统]',
       'tags: [' + opts.tags.join(', ') + ']',
       '---',
       '',
