@@ -33,4 +33,11 @@ tags: [python, fastapi]
 4. 点 **Commit changes**，在仓库的 **Actions** 页面能看到发布进度，绿色对勾出现后网站就更新了（一般两三分钟）。
 
 - 项目页每天早上 6 点左右会自动同步一次 GitHub 上的公开仓库，每次提交日记时也会同步。
+- 想给文章加封面图：先把图片上传到 `assets/img`，再在模板的 `tags` 下面加两行：
+
+  ```yaml
+  image:
+    path: /assets/img/图片文件名.jpg
+  ```
+
 - 每篇日记页面上有“编辑”链接，点进去就能直接在 GitHub 上修改。
