@@ -315,12 +315,77 @@
     return function () { clearTimeout(t); t = setTimeout(fn, ms); };
   }
 
+  /* ---------------- 6. 点击彩带 ---------------- */
+  function confetti() {
+    var cv = doc.createElement('canvas');
+    cv.id = 'fx-confetti';
+    cv.setAttribute('aria-hidden', 'true');
+    cv.style.cssText = 'position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:2147483000';
+    doc.body.appendChild(cv);
+    var ctx = cv.getContext('2d');
+    var dpr = 1, W = 0, H = 0, bits = [], raf = 0, last = 0;
+    var COLORS = ['#ff6b6b', '#fcc419', '#51cf66', '#339af0', '#cc5de8', '#ff922b', '#22b8cf', '#f06595'];
+    function resize() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = innerWidth; H = innerHeight;
+      cv.width = W * dpr; cv.height = H * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    function burst(x, y) {
+      var n = innerWidth < 768 ? 18 : 30;
+      for (var i = 0; i < n; i++) {
+        var a = -Math.PI / 2 + (Math.random() - 0.5) * Math.PI * 1.3;
+        var v = 4 + Math.random() * 6;
+        bits.push({
+          x: x, y: y,
+          vx: Math.cos(a) * v, vy: Math.sin(a) * v,
+          w: 5 + Math.random() * 5, h: 10 + Math.random() * 10,
+          rot: Math.random() * Math.PI, vr: (Math.random() - 0.5) * 0.35,
+          flip: Math.random() * Math.PI, vf: 0.12 + Math.random() * 0.18,
+          c: COLORS[(Math.random() * COLORS.length) | 0], life: 0, max: 70 + Math.random() * 40
+        });
+      }
+      if (bits.length > 400) bits.splice(0, bits.length - 400);
+      if (!raf) { last = 0; raf = requestAnimationFrame(tick); }
+    }
+    function tick(t) {
+      var k = last ? Math.min((t - last) / 16.7, 3) : 1; last = t;
+      ctx.clearRect(0, 0, W, H);
+      for (var i = bits.length - 1; i >= 0; i--) {
+        var b = bits[i];
+        b.life += k;
+        b.vy += 0.22 * k; b.vx *= Math.pow(0.985, k); b.vy *= Math.pow(0.985, k);
+        b.x += b.vx * k + Math.sin(b.life / 8) * 0.4; b.y += b.vy * k;
+        b.rot += b.vr * k; b.flip += b.vf * k;
+        var alpha = 1 - Math.max(0, (b.life - b.max * 0.6) / (b.max * 0.4));
+        if (alpha <= 0 || b.y > H + 30) { bits.splice(i, 1); continue; }
+        ctx.save();
+        ctx.globalAlpha = alpha;
+        ctx.translate(b.x, b.y);
+        ctx.rotate(b.rot);
+        ctx.scale(1, Math.cos(b.flip));
+        ctx.fillStyle = b.c;
+        ctx.fillRect(-b.w / 2, -b.h / 2, b.w, b.h);
+        ctx.restore();
+      }
+      raf = bits.length ? requestAnimationFrame(tick) : 0;
+      if (!raf) ctx.clearRect(0, 0, W, H);
+    }
+    resize();
+    window.addEventListener('resize', debounce(resize, 150));
+    doc.addEventListener('pointerdown', function (e) {
+      if (reduced || e.button > 0) return;
+      burst(e.clientX, e.clientY);
+    }, { passive: true });
+  }
+
   function init() {
     try { depthBackground(); } catch (e) { /* 背景失败不影响其它效果 */ }
     typing();
     cards();
     progress();
     writeButton();
+    try { confetti(); } catch (e) { /* 彩带失败不影响其它效果 */ }
   }
 
   if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', init);
