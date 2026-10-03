@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" width="760" height="380" font-family="'PingFang SC','Microsoft YaHei','Noto Sans CJK SC','Noto Sans SC',sans-serif">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#212529"/></marker>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e03131"/></marker></defs>
+<rect width="760" height="380" rx="12" fill="#ffffff"/>
+<text x="380" y="28" font-size="18" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">指针：p 保存的是 hp 的地址，*p 就是 hp 本身</text>
+<text x="20" y="70" font-size="14" fill="#212529" text-anchor="start" font-weight="normal" dominant-baseline="middle">代码：hp := 60　　p := &amp;hp　　*p = 80</text>
+<text x="170" y="115" font-size="14" fill="#1c7ed6" text-anchor="middle" font-weight="bold" dominant-baseline="middle">变量 hp（类型 int）</text>
+<rect x="90" y="135" width="160" height="70" rx="8" fill="#d0ebff" stroke="#1c7ed6" stroke-width="1.5"/>
+<text x="170" y="160" font-size="20" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">60 → 80</text>
+<text x="170" y="190" font-size="12" fill="#868e96" text-anchor="middle" font-weight="normal" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">地址 0xc000012080</text>
+<text x="560" y="115" font-size="14" fill="#e03131" text-anchor="middle" font-weight="bold" dominant-baseline="middle">变量 p（类型 *int）</text>
+<rect x="470" y="135" width="180" height="70" rx="8" fill="#ffe3e3" stroke="#e03131" stroke-width="1.5"/>
+<text x="560" y="160" font-size="18" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">0xc000012080</text>
+<text x="560" y="190" font-size="12" fill="#868e96" text-anchor="middle" font-weight="normal" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">地址 0xc000012088</text>
+<line x1="468" y1="170" x2="254" y2="170" stroke="#e03131" stroke-width="2" marker-end="url(#arr)"/>
+<text x="360" y="152" font-size="13" fill="#e03131" text-anchor="middle" font-weight="normal" dominant-baseline="middle">p 指向 hp</text>
+<rect x="40" y="240" width="680" height="120" rx="8" fill="#f8f9fa" stroke="#868e96" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="60" y="265" font-size="14" fill="#e03131" text-anchor="start" font-weight="bold" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">&amp;hp</text>
+<text x="170" y="265" font-size="14" fill="#212529" text-anchor="start" font-weight="normal" dominant-baseline="middle">取地址：得到 hp 的地址 0xc000012080，类型是 *int</text>
+<text x="60" y="291" font-size="14" fill="#e03131" text-anchor="start" font-weight="bold" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">*p</text>
+<text x="170" y="291" font-size="14" fill="#212529" text-anchor="start" font-weight="normal" dominant-baseline="middle">解引用：顺着地址找到 hp，读出 60</text>
+<text x="60" y="317" font-size="14" fill="#e03131" text-anchor="start" font-weight="bold" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">*p = 80</text>
+<text x="170" y="317" font-size="14" fill="#212529" text-anchor="start" font-weight="normal" dominant-baseline="middle">通过指针改值：等价于 hp = 80</text>
+<text x="60" y="343" font-size="14" fill="#e03131" text-anchor="start" font-weight="bold" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">p = nil</text>
+<text x="170" y="343" font-size="14" fill="#212529" text-anchor="start" font-weight="normal" dominant-baseline="middle">改的是 p 自己（不再指向任何变量），hp 不受影响</text>
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 410" width="760" height="410" font-family="'PingFang SC','Microsoft YaHei','Noto Sans CJK SC','Noto Sans SC',sans-serif">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#212529"/></marker>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e03131"/></marker></defs>
+<rect width="760" height="410" rx="12" fill="#ffffff"/>
+<text x="380" y="28" font-size="17" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">包的初始化顺序：先按依赖初始化包级变量，再执行 init，最后 main</text>
+<rect x="40" y="60" width="260" height="46" rx="8" fill="#d0ebff" stroke="#1c7ed6" stroke-width="1.5"/>
+<text x="170" y="83" font-size="14" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">var count = 3</text>
+<text x="315" y="83" font-size="14" fill="#1c7ed6" text-anchor="start" font-weight="normal" dominant-baseline="middle">1. 不依赖谁，最先初始化</text>
+<line x1="170" y1="108" x2="170" y2="126" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="40" y="128" width="260" height="46" rx="8" fill="#d0ebff" stroke="#1c7ed6" stroke-width="1.5"/>
+<text x="170" y="151" font-size="14" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">var price = getPrice()</text>
+<text x="315" y="151" font-size="14" fill="#1c7ed6" text-anchor="start" font-weight="normal" dominant-baseline="middle">2. 依赖 count，第二个</text>
+<line x1="170" y1="176" x2="170" y2="194" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="40" y="196" width="260" height="46" rx="8" fill="#d0ebff" stroke="#1c7ed6" stroke-width="1.5"/>
+<text x="170" y="219" font-size="14" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">var total = price * count</text>
+<text x="315" y="219" font-size="14" fill="#1c7ed6" text-anchor="start" font-weight="normal" dominant-baseline="middle">3. 依赖 price、count，第三个</text>
+<line x1="170" y1="244" x2="170" y2="262" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="40" y="264" width="260" height="46" rx="8" fill="#fff3bf" stroke="#e67700" stroke-width="1.5"/>
+<text x="170" y="287" font-size="14" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">func init()</text>
+<text x="315" y="287" font-size="14" fill="#e67700" text-anchor="start" font-weight="normal" dominant-baseline="middle">4. 所有包级变量就绪后自动调用</text>
+<line x1="170" y1="312" x2="170" y2="330" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="40" y="332" width="260" height="46" rx="8" fill="#ffe3e3" stroke="#e03131" stroke-width="1.5"/>
+<text x="170" y="355" font-size="14" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">func main()</text>
+<text x="315" y="355" font-size="14" fill="#e03131" text-anchor="start" font-weight="normal" dominant-baseline="middle">5. 最后才进入 main</text>
+<rect x="570" y="60" width="170" height="330" rx="8" fill="#f8f9fa" stroke="#868e96" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="655" y="82" font-size="14" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">多个包时</text>
+<rect x="585" y="120" width="140" height="44" rx="8" fill="#ffffff" stroke="#2f9e44" stroke-width="1.5"/>
+<text x="655" y="142" font-size="13" fill="#2f9e44" text-anchor="middle" font-weight="bold" dominant-baseline="middle">fmt 等被导入的包</text>
+<line x1="655" y1="166" x2="655" y2="208" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="585" y="210" width="140" height="44" rx="8" fill="#ffffff" stroke="#2f9e44" stroke-width="1.5"/>
+<text x="655" y="232" font-size="13" fill="#2f9e44" text-anchor="middle" font-weight="bold" dominant-baseline="middle">你自己的 weight 包</text>
+<line x1="655" y1="256" x2="655" y2="298" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="585" y="300" width="140" height="44" rx="8" fill="#ffffff" stroke="#e03131" stroke-width="1.5"/>
+<text x="655" y="322" font-size="13" fill="#e03131" text-anchor="middle" font-weight="bold" dominant-baseline="middle">main 包</text>
+<text x="655" y="362" font-size="12" fill="#868e96" text-anchor="middle" font-weight="normal" dominant-baseline="middle">自底向上初始化</text>
+<text x="655" y="380" font-size="12" fill="#868e96" text-anchor="middle" font-weight="normal" dominant-baseline="middle">每个包只初始化一次</text>
+</svg>

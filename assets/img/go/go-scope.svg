@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 470" width="760" height="470" font-family="'PingFang SC','Microsoft YaHei','Noto Sans CJK SC','Noto Sans SC',sans-serif">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#212529"/></marker>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e03131"/></marker></defs>
+<rect width="760" height="470" rx="12" fill="#ffffff"/>
+<text x="380" y="28" font-size="18" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">词法块层层嵌套：查找名字时从里往外找</text>
+<rect x="30" y="55" width="700" height="395" rx="8" fill="#f8f9fa" stroke="#868e96" stroke-width="1.5"/>
+<text x="44" y="75" font-size="13" fill="#212529" text-anchor="start" font-weight="bold" dominant-baseline="middle">全局块：int、len、true、nil、new … 内置名字</text>
+<rect x="55" y="95" width="650" height="345" rx="8" fill="#e7f5ff" stroke="#1c7ed6" stroke-width="1.5"/>
+<text x="69" y="115" font-size="13" fill="#1c7ed6" text-anchor="start" font-weight="bold" dominant-baseline="middle">包级块：var level = "包级"、func main（同一个包的所有文件都能看到）</text>
+<rect x="80" y="135" width="600" height="295" rx="8" fill="#ebfbee" stroke="#2f9e44" stroke-width="1.5"/>
+<text x="94" y="155" font-size="13" fill="#2f9e44" text-anchor="start" font-weight="bold" dominant-baseline="middle">文件块：import "fmt"（只在当前这个 .go 文件里有效）</text>
+<rect x="105" y="175" width="550" height="245" rx="8" fill="#fff9db" stroke="#e67700" stroke-width="1.5"/>
+<text x="119" y="195" font-size="13" fill="#e67700" text-anchor="start" font-weight="bold" dominant-baseline="middle">函数 main 的块：x := 10、level := "局部"（屏蔽包级 level）</text>
+<rect x="130" y="215" width="500" height="195" rx="8" fill="#fff0f6" stroke="#c2255c" stroke-width="1.5"/>
+<text x="144" y="235" font-size="13" fill="#c2255c" text-anchor="start" font-weight="bold" dominant-baseline="middle">if 的隐式块（条件部分）：x := x * 2 → 新的 x = 20</text>
+<rect x="155" y="255" width="450" height="145" rx="8" fill="#ffe3e3" stroke="#e03131" stroke-width="1.5"/>
+<text x="169" y="275" font-size="13" fill="#e03131" text-anchor="start" font-weight="bold" dominant-baseline="middle">if 的花括号块：x := x + 1 → 又一个新的 x = 21</text>
+<text x="180" y="310" font-size="15" fill="#212529" text-anchor="start" font-weight="bold" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">fmt.Println(x)</text>
+<text x="180" y="340" font-size="13" fill="#e03131" text-anchor="start" font-weight="normal" dominant-baseline="middle">① 先在最里层找 x → 找到 21，就用它，外层的 x 被屏蔽</text>
+<text x="180" y="362" font-size="13" fill="#212529" text-anchor="start" font-weight="normal" dominant-baseline="middle">② 最里层没有，就往外一层找，一直找到全局块</text>
+<text x="180" y="384" font-size="13" fill="#212529" text-anchor="start" font-weight="normal" dominant-baseline="middle">③ 全都找不到 → 编译错误 undefined</text>
+<line x1="585" y1="385" x2="585" y2="290" stroke="#e03131" stroke-width="2" marker-end="url(#arr)"/>
+<text x="555" y="300" font-size="13" fill="#e03131" text-anchor="middle" font-weight="normal" dominant-baseline="middle">向外</text>
+</svg>
