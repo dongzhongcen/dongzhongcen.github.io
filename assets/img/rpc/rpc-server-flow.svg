@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 540" width="760" height="540" font-family="'PingFang SC','Microsoft YaHei','Noto Sans CJK SC','Noto Sans SC',sans-serif">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#212529"/></marker>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e03131"/></marker></defs>
+<rect width="760" height="540" rx="12" fill="#ffffff"/>
+<text x="380" y="26" font-size="18" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">服务端处理流程</text>
+<rect x="270" y="48" width="220" height="38" rx="8" fill="#d0ebff" stroke="#1c7ed6" stroke-width="1.5"/>
+<text x="380.0" y="67.0" font-size="14" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">Accept(lis)</text>
+<text x="500" y="67" font-size="12" fill="#868e96" text-anchor="start" font-weight="normal" dominant-baseline="middle">for 循环等连接</text>
+<rect x="40" y="120" width="200" height="38" rx="8" fill="#d0ebff" stroke="#1c7ed6" stroke-width="1.5"/>
+<text x="140.0" y="139.0" font-size="14" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">go ServeConn(conn)</text>
+<rect x="280" y="120" width="200" height="38" rx="8" fill="#d0ebff" stroke="#1c7ed6" stroke-width="1.5"/>
+<text x="380.0" y="139.0" font-size="14" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">go ServeConn(conn)</text>
+<rect x="520" y="120" width="200" height="38" rx="8" fill="#d0ebff" stroke="#1c7ed6" stroke-width="1.5"/>
+<text x="620.0" y="139.0" font-size="14" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">go ServeConn(conn)</text>
+<line x1="380" y1="88" x2="140" y2="118" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="380" y1="88" x2="380" y2="118" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="380" y1="88" x2="620" y2="118" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<text x="380" y="176" font-size="12" fill="#868e96" text-anchor="middle" font-weight="normal" dominant-baseline="middle">每个连接一个 goroutine，下面看其中一个</text>
+<rect x="40" y="190" width="680" height="330" rx="8" fill="#f8f9fa" stroke="#868e96" stroke-width="1.5" stroke-dasharray="5 4"/>
+<rect x="70" y="205" width="250" height="38" rx="8" fill="#fff9db" stroke="#e67700" stroke-width="1.5"/>
+<text x="195.0" y="224.0" font-size="14" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">JSON 解码 Option</text>
+<rect x="400" y="205" width="290" height="38" rx="8" fill="#fff9db" stroke="#e67700" stroke-width="1.5"/>
+<text x="545.0" y="224.0" font-size="14" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">检查 MagicNumber / CodecType</text>
+<line x1="322" y1="224" x2="398" y2="224" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<text x="545" y="258" font-size="12" fill="#e03131" text-anchor="middle" font-weight="normal" dominant-baseline="middle">不对就直接关闭连接</text>
+<line x1="545" y1="268" x2="545" y2="286" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="400" y="288" width="290" height="38" rx="8" fill="#fff9db" stroke="#e67700" stroke-width="1.5"/>
+<text x="545.0" y="307.0" font-size="14" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">f(conn) 创建 Codec → serveCodec</text>
+<line x1="400" y1="307" x2="330" y2="307" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="60" y="288" width="270" height="215" rx="8" fill="#ffffff" stroke="#1c7ed6" stroke-width="1.5"/>
+<text x="195" y="308" font-size="14" fill="#1c7ed6" text-anchor="middle" font-weight="bold" dominant-baseline="middle">serveCodec：for 循环</text>
+<rect x="85" y="325" width="220" height="34" rx="8" fill="#d0ebff" stroke="#1c7ed6" stroke-width="1.5"/>
+<text x="195.0" y="342.0" font-size="13" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">readRequest</text>
+<line x1="195" y1="361" x2="195" y2="381" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="85" y="383" width="220" height="34" rx="8" fill="#d0ebff" stroke="#1c7ed6" stroke-width="1.5"/>
+<text x="195.0" y="400.0" font-size="13" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">go handleRequest</text>
+<line x1="195" y1="419" x2="195" y2="439" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="85" y="441" width="220" height="34" rx="8" fill="#ffe3e3" stroke="#e03131" stroke-width="1.5"/>
+<text x="195.0" y="458.0" font-size="13" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">sendResponse（加锁）</text>
+<text x="195" y="490" font-size="11" fill="#868e96" text-anchor="middle" font-weight="normal" dominant-baseline="middle">header 读失败才退出循环，wg.Wait() 后关闭</text>
+<rect x="370" y="350" width="330" height="150" rx="8" fill="#ffffff" stroke="#e03131" stroke-width="1.5" stroke-dasharray="4 3"/>
+<text x="390" y="372" font-size="14" fill="#e03131" text-anchor="start" font-weight="bold" dominant-baseline="middle">并发处理，逐个回复</text>
+<text x="390" y="400" font-size="13" fill="#212529" text-anchor="start" font-weight="normal" dominant-baseline="middle">• 每个请求一个 goroutine 并发处理</text>
+<text x="390" y="425" font-size="13" fill="#212529" text-anchor="start" font-weight="normal" dominant-baseline="middle">• 回复时用 sending 互斥锁，</text>
+<text x="390" y="447" font-size="13" fill="#212529" text-anchor="start" font-weight="normal" dominant-baseline="middle">  一个响应写完才能写下一个</text>
+<text x="390" y="475" font-size="13" fill="#212529" text-anchor="start" font-weight="normal" dominant-baseline="middle">• WaitGroup 等所有请求处理完</text>
+</svg>

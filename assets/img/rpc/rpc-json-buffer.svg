@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 340" width="760" height="340" font-family="'PingFang SC','Microsoft YaHei','Noto Sans CJK SC','Noto Sans SC',sans-serif">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#212529"/></marker>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e03131"/></marker></defs>
+<rect width="760" height="340" rx="12" fill="#ffffff"/>
+<text x="380" y="28" font-size="18" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">为什么客户端要先 sleep：json.Decoder 会多读</text>
+<text x="40" y="68" font-size="14" fill="#212529" text-anchor="start" font-weight="bold" dominant-baseline="middle">客户端连续写入（没有停顿）：</text>
+<rect x="40" y="85" width="160" height="44" rx="4" fill="#fff9db" stroke="#e67700" stroke-width="1.5"/>
+<text x="120.0" y="107" font-size="13" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">Option(JSON)</text>
+<rect x="204" y="85" width="150" height="44" rx="4" fill="#d0ebff" stroke="#1c7ed6" stroke-width="1.5"/>
+<text x="279.0" y="107" font-size="13" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">Header0(gob)</text>
+<rect x="358" y="85" width="140" height="44" rx="4" fill="#ffffff" stroke="#1c7ed6" stroke-width="1.5"/>
+<text x="428.0" y="107" font-size="13" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">Body0(gob)</text>
+<rect x="36" y="140" width="330" height="40" rx="4" fill="none" stroke="#e03131" stroke-width="2" stroke-dasharray="5 3"/>
+<text x="380" y="160" font-size="13" fill="#e03131" text-anchor="start" font-weight="bold" dominant-baseline="middle">← json.Decoder 一次读进缓冲区的范围</text>
+<rect x="40" y="200" width="680" height="120" rx="8" fill="#f8f9fa" stroke="#868e96" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="60" y="222" font-size="13" fill="#212529" text-anchor="start" font-weight="normal" dominant-baseline="middle">• json.Decoder 为了效率，会从 conn 里一次多读一块数据放进自己的缓冲区</text>
+<text x="60" y="248" font-size="13" fill="#212529" text-anchor="start" font-weight="normal" dominant-baseline="middle">• 它只解析出 Option，多读进来的 gob 字节就留在它的缓冲区里</text>
+<text x="60" y="274" font-size="13" fill="#e03131" text-anchor="start" font-weight="bold" dominant-baseline="middle">• 之后 gob.Decoder 直接读 conn，前面那段已经被“吃掉”，Header 解不出来</text>
+<text x="60" y="300" font-size="13" fill="#212529" text-anchor="start" font-weight="normal" dominant-baseline="middle">• sleep 1 秒让 Option 先单独到达服务端，绕开这个问题（后面章节再彻底解决）</text>
+</svg>
