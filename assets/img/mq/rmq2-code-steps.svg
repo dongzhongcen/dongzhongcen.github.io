@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" font-family="'PingFang SC','Microsoft YaHei','Noto Sans CJK SC','Noto Sans SC',sans-serif">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#212529"/></marker>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e03131"/></marker></defs>
+<rect width="800" height="450" rx="12" fill="#ffffff"/>
+<text x="400" y="28" font-size="18" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">生产者与消费者的代码步骤</text>
+<text x="205" y="62" font-size="15" fill="#e67700" text-anchor="middle" font-weight="bold" dominant-baseline="middle">生产者 ProducerDemo</text>
+<text x="595" y="62" font-size="15" fill="#2f9e44" text-anchor="middle" font-weight="bold" dominant-baseline="middle">消费者 ConsumerDemo</text>
+<rect x="30" y="80" width="350" height="46" rx="8" fill="#fff9db" stroke="#e67700" stroke-width="1.5"/>
+<text x="45" y="95" font-size="13" fill="#212529" text-anchor="start" font-weight="bold" dominant-baseline="middle">1 建立连接</text>
+<text x="45" y="114" font-size="12" fill="#868e96" text-anchor="start" font-weight="normal" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">ConnectionFactory.newConnection()</text>
+<line x1="205" y1="127" x2="205" y2="135" stroke="#212529" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="30" y="136" width="350" height="46" rx="8" fill="#fff9db" stroke="#e67700" stroke-width="1.5"/>
+<text x="45" y="151" font-size="13" fill="#212529" text-anchor="start" font-weight="bold" dominant-baseline="middle">2 开启信道</text>
+<text x="45" y="170" font-size="12" fill="#868e96" text-anchor="start" font-weight="normal" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">connection.createChannel()</text>
+<line x1="205" y1="183" x2="205" y2="191" stroke="#212529" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="30" y="192" width="350" height="46" rx="8" fill="#fff9db" stroke="#e67700" stroke-width="1.5"/>
+<text x="45" y="207" font-size="13" fill="#212529" text-anchor="start" font-weight="bold" dominant-baseline="middle">3 声明交换机</text>
+<text x="45" y="226" font-size="12" fill="#868e96" text-anchor="start" font-weight="normal" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">（本例用默认交换机，省略）</text>
+<line x1="205" y1="239" x2="205" y2="247" stroke="#212529" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="30" y="248" width="350" height="46" rx="8" fill="#fff9db" stroke="#e67700" stroke-width="1.5"/>
+<text x="45" y="263" font-size="13" fill="#212529" text-anchor="start" font-weight="bold" dominant-baseline="middle">4 声明队列</text>
+<text x="45" y="282" font-size="12" fill="#868e96" text-anchor="start" font-weight="normal" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">channel.queueDeclare(...)</text>
+<line x1="205" y1="295" x2="205" y2="303" stroke="#212529" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="30" y="304" width="350" height="46" rx="8" fill="#ffe3e3" stroke="#e03131" stroke-width="1.5"/>
+<text x="45" y="319" font-size="13" fill="#212529" text-anchor="start" font-weight="bold" dominant-baseline="middle">5 发送消息</text>
+<text x="45" y="338" font-size="12" fill="#868e96" text-anchor="start" font-weight="normal" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">channel.basicPublish(...)</text>
+<line x1="205" y1="351" x2="205" y2="359" stroke="#212529" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="30" y="360" width="350" height="46" rx="8" fill="#fff9db" stroke="#e67700" stroke-width="1.5"/>
+<text x="45" y="375" font-size="13" fill="#212529" text-anchor="start" font-weight="bold" dominant-baseline="middle">6 释放资源</text>
+<text x="45" y="394" font-size="12" fill="#868e96" text-anchor="start" font-weight="normal" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">channel.close() / connection.close()</text>
+<rect x="420" y="80" width="350" height="46" rx="8" fill="#ebfbee" stroke="#2f9e44" stroke-width="1.5"/>
+<text x="435" y="95" font-size="13" fill="#212529" text-anchor="start" font-weight="bold" dominant-baseline="middle">1 建立连接</text>
+<text x="435" y="114" font-size="12" fill="#868e96" text-anchor="start" font-weight="normal" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">ConnectionFactory.newConnection()</text>
+<line x1="595" y1="127" x2="595" y2="135" stroke="#212529" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="420" y="136" width="350" height="46" rx="8" fill="#ebfbee" stroke="#2f9e44" stroke-width="1.5"/>
+<text x="435" y="151" font-size="13" fill="#212529" text-anchor="start" font-weight="bold" dominant-baseline="middle">2 开启信道</text>
+<text x="435" y="170" font-size="12" fill="#868e96" text-anchor="start" font-weight="normal" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">connection.createChannel()</text>
+<line x1="595" y1="183" x2="595" y2="191" stroke="#212529" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="420" y="192" width="350" height="46" rx="8" fill="#ebfbee" stroke="#2f9e44" stroke-width="1.5"/>
+<text x="435" y="207" font-size="13" fill="#212529" text-anchor="start" font-weight="bold" dominant-baseline="middle">3 声明队列</text>
+<text x="435" y="226" font-size="12" fill="#868e96" text-anchor="start" font-weight="normal" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">channel.queueDeclare(...)</text>
+<line x1="595" y1="239" x2="595" y2="247" stroke="#212529" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="420" y="248" width="350" height="46" rx="8" fill="#ffe3e3" stroke="#e03131" stroke-width="1.5"/>
+<text x="435" y="263" font-size="13" fill="#212529" text-anchor="start" font-weight="bold" dominant-baseline="middle">4 消费消息</text>
+<text x="435" y="282" font-size="12" fill="#868e96" text-anchor="start" font-weight="normal" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">channel.basicConsume(..., consumer)</text>
+<line x1="595" y1="295" x2="595" y2="303" stroke="#212529" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="420" y="304" width="350" height="46" rx="8" fill="#ebfbee" stroke="#2f9e44" stroke-width="1.5"/>
+<text x="435" y="319" font-size="13" fill="#212529" text-anchor="start" font-weight="bold" dominant-baseline="middle">5 释放资源</text>
+<text x="435" y="338" font-size="12" fill="#868e96" text-anchor="start" font-weight="normal" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">channel.close() / connection.close()</text>
+<text x="400" y="430" font-size="13" fill="#868e96" text-anchor="middle" font-weight="normal" dominant-baseline="middle">前两步完全一样；两边都声明同一个队列，谁先启动都没问题</text>
+</svg>

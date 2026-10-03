@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 395" width="800" height="395" font-family="'PingFang SC','Microsoft YaHei','Noto Sans CJK SC','Noto Sans SC',sans-serif">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#212529"/></marker>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e03131"/></marker></defs>
+<rect width="800" height="395" rx="12" fill="#ffffff"/>
+<text x="400" y="28" font-size="18" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">AMQP 协议的三层结构</text>
+<rect x="40" y="60" width="720" height="88" rx="8" fill="#ffe3e3" stroke="#e03131" stroke-width="1.5"/>
+<text x="60" y="82" font-size="15" fill="#e03131" text-anchor="start" font-weight="bold" dominant-baseline="middle">Module Layer 功能层</text>
+<text x="60" y="108" font-size="13" fill="#212529" text-anchor="start" font-weight="normal" dominant-baseline="middle">定义客户端能调用的命令：声明队列、发布消息、消费消息……</text>
+<text x="60" y="130" font-size="12" fill="#868e96" text-anchor="start" font-weight="normal" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">queue.declare / basic.publish / basic.consume</text>
+<rect x="40" y="160" width="720" height="88" rx="8" fill="#d0ebff" stroke="#1c7ed6" stroke-width="1.5"/>
+<text x="60" y="182" font-size="15" fill="#1c7ed6" text-anchor="start" font-weight="bold" dominant-baseline="middle">Session Layer 会话层</text>
+<text x="60" y="208" font-size="13" fill="#212529" text-anchor="start" font-weight="normal" dominant-baseline="middle">把命令从客户端可靠地送到服务端、把应答送回来，处理同步与错误</text>
+<text x="60" y="230" font-size="12" fill="#868e96" text-anchor="start" font-weight="normal" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">请求 → 应答，保证顺序与可靠</text>
+<rect x="40" y="260" width="720" height="88" rx="8" fill="#ebfbee" stroke="#2f9e44" stroke-width="1.5"/>
+<text x="60" y="282" font-size="15" fill="#2f9e44" text-anchor="start" font-weight="bold" dominant-baseline="middle">Transport Layer 传输层</text>
+<text x="60" y="308" font-size="13" fill="#212529" text-anchor="start" font-weight="normal" dominant-baseline="middle">把数据切成帧（Frame）在 TCP 上传输，负责多路复用、错误检测</text>
+<text x="60" y="330" font-size="12" fill="#868e96" text-anchor="start" font-weight="normal" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">帧：类型 + Channel ID + 长度 + 内容</text>
+<line x1="778" y1="70" x2="778" y2="340" stroke="#212529" stroke-width="2" marker-end="url(#ar)"/>
+<text x="400" y="372" font-size="13" fill="#868e96" text-anchor="middle" font-weight="normal" dominant-baseline="middle">从上往下：应用调用命令 → 会话层组织请求与应答 → 传输层打成帧走 TCP</text>
+</svg>

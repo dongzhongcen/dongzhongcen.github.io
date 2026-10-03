@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420" font-family="'PingFang SC','Microsoft YaHei','Noto Sans CJK SC','Noto Sans SC',sans-serif">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#212529"/></marker>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e03131"/></marker></defs>
+<rect width="800" height="420" rx="12" fill="#ffffff"/>
+<text x="400" y="28" font-size="18" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">一个 Connection，多个 Channel</text>
+<text x="130" y="60" font-size="14" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">应用程序（客户端）</text>
+<rect x="40" y="85" width="180" height="46" rx="8" fill="#fff9db" stroke="#e67700" stroke-width="1.5"/>
+<text x="130.0" y="108.0" font-size="14" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">线程 1</text>
+<rect x="40" y="150" width="180" height="46" rx="8" fill="#fff9db" stroke="#e67700" stroke-width="1.5"/>
+<text x="130.0" y="173.0" font-size="14" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">线程 2</text>
+<rect x="40" y="215" width="180" height="46" rx="8" fill="#fff9db" stroke="#e67700" stroke-width="1.5"/>
+<text x="130.0" y="238.0" font-size="14" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">线程 3</text>
+<rect x="250" y="75" width="330" height="200" rx="8" fill="#fff4e6" stroke="#e67700" stroke-width="1.5"/>
+<text x="415" y="95" font-size="14" fill="#e67700" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Connection（一条 TCP 连接）</text>
+<rect x="265" y="110" width="300" height="36" rx="16" fill="#e5dbff" stroke="#7048e8" stroke-width="1.5"/>
+<text x="415" y="128" font-size="13" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">Channel 1</text>
+<line x1="222" y1="108" x2="263" y2="128" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="567" y1="128" x2="618" y2="175" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="265" y="162" width="300" height="36" rx="16" fill="#e5dbff" stroke="#7048e8" stroke-width="1.5"/>
+<text x="415" y="180" font-size="13" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">Channel 2</text>
+<line x1="222" y1="173" x2="263" y2="180" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="567" y1="180" x2="618" y2="175" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="265" y="214" width="300" height="36" rx="16" fill="#e5dbff" stroke="#7048e8" stroke-width="1.5"/>
+<text x="415" y="232" font-size="13" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle" font-family="Consolas,Menlo,monospace">Channel 3</text>
+<line x1="222" y1="238" x2="263" y2="232" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="567" y1="232" x2="618" y2="175" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<rect x="620" y="140" width="140" height="70" rx="8" fill="#f1f3f5" stroke="#212529" stroke-width="1.5"/>
+<text x="690.0" y="166.0" font-size="15" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Broker</text>
+<text x="690.0" y="186.0" font-size="12" fill="#868e96" text-anchor="middle" font-weight="normal" dominant-baseline="middle">RabbitMQ</text>
+<rect x="40" y="300" width="720" height="105" rx="8" fill="#ffffff" stroke="#868e96" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="60" y="324" font-size="13" fill="#212529" text-anchor="start" font-weight="normal" dominant-baseline="middle">• 建一条 TCP 连接要三次握手，还要认证，代价高；每个线程各建一条，连接数一多服务器就扛不住</text>
+<text x="60" y="350" font-size="13" fill="#212529" text-anchor="start" font-weight="normal" dominant-baseline="middle">• Channel 是建立在 Connection 之上的虚拟连接，开关很便宜，每个 Channel 有自己的 ID</text>
+<text x="60" y="376" font-size="13" fill="#e03131" text-anchor="start" font-weight="bold" dominant-baseline="middle">• 一般一个线程用一个 Channel，大家复用同一条 TCP 连接，互不干扰</text>
+</svg>

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" width="800" height="440" font-family="'PingFang SC','Microsoft YaHei','Noto Sans CJK SC','Noto Sans SC',sans-serif">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#212529"/></marker>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e03131"/></marker></defs>
+<rect width="800" height="440" rx="12" fill="#ffffff"/>
+<text x="400" y="28" font-size="18" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">用寄信来理解 RabbitMQ</text>
+<rect x="30" y="120" width="120" height="64" rx="8" fill="#fff9db" stroke="#e67700" stroke-width="1.5"/>
+<text x="90.0" y="143.0" font-size="15" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">寄件人</text>
+<text x="90.0" y="163.0" font-size="12" fill="#868e96" text-anchor="middle" font-weight="normal" dominant-baseline="middle">Producer</text>
+<rect x="650" y="120" width="120" height="64" rx="8" fill="#ebfbee" stroke="#2f9e44" stroke-width="1.5"/>
+<text x="710.0" y="143.0" font-size="15" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">收件人</text>
+<text x="710.0" y="163.0" font-size="12" fill="#868e96" text-anchor="middle" font-weight="normal" dominant-baseline="middle">Consumer</text>
+<rect x="200" y="60" width="400" height="190" rx="8" fill="#f8f9fa" stroke="#212529" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="400" y="80" font-size="15" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">邮局 Broker</text>
+<rect x="215" y="95" width="370" height="140" rx="8" fill="#ffffff" stroke="#7048e8" stroke-width="1.5" stroke-dasharray="3 3"/>
+<text x="400" y="110" font-size="12" fill="#7048e8" text-anchor="middle" font-weight="normal" dominant-baseline="middle">某个分局 Virtual Host</text>
+<rect x="230" y="130" width="130" height="64" rx="8" fill="#ffe3e3" stroke="#e03131" stroke-width="1.5"/>
+<text x="295.0" y="153.0" font-size="15" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">分拣员</text>
+<text x="295.0" y="173.0" font-size="12" fill="#868e96" text-anchor="middle" font-weight="normal" dominant-baseline="middle">Exchange</text>
+<rect x="450" y="130" width="120" height="64" rx="8" fill="#d0ebff" stroke="#1c7ed6" stroke-width="1.5"/>
+<text x="510.0" y="153.0" font-size="15" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">信箱</text>
+<text x="510.0" y="173.0" font-size="12" fill="#868e96" text-anchor="middle" font-weight="normal" dominant-baseline="middle">Queue</text>
+<line x1="362" y1="162" x2="448" y2="162" stroke="#e03131" stroke-width="2" marker-end="url(#arr)"/>
+<text x="405" y="148" font-size="12" fill="#e03131" text-anchor="middle" font-weight="normal" dominant-baseline="middle">分拣规则</text>
+<text x="405" y="178" font-size="11" fill="#868e96" text-anchor="middle" font-weight="normal" dominant-baseline="middle">Binding</text>
+<line x1="152" y1="152" x2="228" y2="152" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<text x="172" y="138" font-size="12" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">送信</text>
+<line x1="572" y1="152" x2="648" y2="152" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<text x="628" y="138" font-size="12" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">取信</text>
+<rect x="30" y="270" width="740" height="150" rx="8" fill="#ffffff" stroke="#868e96" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="50" y="294" font-size="13" fill="#e03131" text-anchor="start" font-weight="bold" dominant-baseline="middle">信 = Message</text>
+<text x="260" y="294" font-size="13" fill="#212529" text-anchor="start" font-weight="normal" dominant-baseline="middle">信封上的地址 = RoutingKey，信的内容 = 消息体</text>
+<text x="50" y="321" font-size="13" fill="#e03131" text-anchor="start" font-weight="bold" dominant-baseline="middle">去邮局的路 = Connection</text>
+<text x="260" y="321" font-size="13" fill="#212529" text-anchor="start" font-weight="normal" dominant-baseline="middle">一条 TCP 长连接，修路成本高，修一条就反复用</text>
+<text x="50" y="348" font-size="13" fill="#e03131" text-anchor="start" font-weight="bold" dominant-baseline="middle">路上的车道 = Channel</text>
+<text x="260" y="348" font-size="13" fill="#212529" text-anchor="start" font-weight="normal" dominant-baseline="middle">一条路上分很多车道，每个线程走自己的车道，互不干扰</text>
+<text x="50" y="375" font-size="13" fill="#e03131" text-anchor="start" font-weight="bold" dominant-baseline="middle">分局 = Virtual Host</text>
+<text x="260" y="375" font-size="13" fill="#212529" text-anchor="start" font-weight="normal" dominant-baseline="middle">同一个邮局分成几个独立分局，各管各的分拣员和信箱</text>
+<text x="50" y="402" font-size="13" fill="#e03131" text-anchor="start" font-weight="bold" dominant-baseline="middle">分拣规则 = Binding</text>
+<text x="260" y="402" font-size="13" fill="#212529" text-anchor="start" font-weight="normal" dominant-baseline="middle">“写着这个地址的信放进这个信箱”，把交换机和队列绑在一起</text>
+</svg>
