@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>SwiftPaw 歌单分享</title>
+<style>
+  :root { --bg:#f6f7f9; --card:#fff; --fg:#1f2328; --muted:#6b7280; --line:#e5e7eb; --accent:#e03131; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#16181d; --card:#1f2228; --fg:#e6e8eb; --muted:#9aa1ab; --line:#2d3139; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left)); }
+  main { max-width: 720px; margin: 0 auto; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px; }
+  .brand { color:var(--muted); font-size:14px; margin-bottom:6px; }
+  h1 { margin:0 0 4px; font-size:24px; word-break:break-word; }
+  .meta { color:var(--muted); font-size:14px; margin-bottom:16px; }
+  .actions { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:8px; }
+  .btn { display:inline-block; padding:10px 18px; border-radius:999px; text-decoration:none; font-size:15px; border:1px solid var(--line); color:var(--fg); }
+  .btn.primary { background:var(--accent); border-color:var(--accent); color:#fff; }
+  .hint { color:var(--muted); font-size:13px; margin:8px 0 0; }
+  ol { list-style:none; margin:16px 0 0; padding:0; counter-reset:n; }
+  li { display:flex; align-items:center; gap:12px; padding:10px 0; border-top:1px solid var(--line); counter-increment:n; }
+  li::before { content: counter(n); width:2em; text-align:right; color:var(--muted); font-variant-numeric:tabular-nums; flex:none; }
+  .info { flex:1; min-width:0; }
+  .t { font-size:15px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .a { font-size:13px; color:var(--muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .side { flex:none; text-align:right; font-size:12px; color:var(--muted); }
+  .tag { display:inline-block; padding:1px 8px; border-radius:999px; border:1px solid var(--line); margin-bottom:2px; }
+  .error h1 { color:var(--accent); }
+  footer { text-align:center; color:var(--muted); font-size:12px; margin-top:16px; }
+  footer a { color:inherit; }
+</style>
+</head>
+<body>
+<main id="app"><div class="card"><p class="meta">正在读取歌单……</p></div></main>
+<footer>由 <a href="https://github.com/dongzhongcen/SwiftPaw">SwiftPaw</a> 分享 · 歌单内容只保存在链接里，不会上传到服务器</footer>
+<script>
+(function () {
+  var RELEASES = 'https://github.com/dongzhongcen/SwiftPaw/releases/latest';
+  var app = document.getElementById('app');
+
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = String(text);
+    return e;
+  }
+  function str(v, max) { return typeof v === 'string' ? v.slice(0, max || 300) : ''; }
+  function fmt(sec) {
+    sec = Math.round(Number(sec));
+    if (!isFinite(sec) || sec <= 0) return '';
+    var m = Math.floor(sec / 60), s = sec % 60;
+    return m + ':' + (s < 10 ? '0' : '') + s;
+  }
+  function b64urlToBytes(s) {
+    s = s.replace(/-/g, '+').replace(/_/g, '/');
+    while (s.length % 4) s += '=';
+    var bin = atob(s), out = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+    return out;
+  }
+  async function decode(payload) {
+    var stream = new Blob([b64urlToBytes(payload)]).stream()
+      .pipeThrough(new DecompressionStream('deflate-raw'));
+    var text = await new Response(stream).text();
+    return JSON.parse(text);
+  }
+
+  function showError(msg) {
+    app.textContent = '';
+    var card = el('div', 'card error');
+    card.appendChild(el('div', 'brand', 'SwiftPaw 歌单分享'));
+    card.appendChild(el('h1', null, '链接已损坏'));
+    card.appendChild(el('p', 'meta', msg || '这个分享链接不完整或格式不对，请让对方重新分享一次。'));
+    var a = el('a', 'btn', '下载 SwiftPaw'); a.href = RELEASES; a.target = '_blank'; a.rel = 'noopener';
+    card.appendChild(a);
+    app.appendChild(card);
+    document.title = '链接已损坏 - SwiftPaw';
+  }
+
+  function render(data, raw) {
+    if (!data || typeof data !== 'object' || !Array.isArray(data.songs)) throw new Error('bad shape');
+    var name = str(data.name, 200) || '未命名歌单';
+    var songs = data.songs.filter(function (s) { return s && typeof s === 'object' && str(s.t); });
+    var local = songs.filter(function (s) { return !str(s.p) || !str(s.id); }).length;
+
+    app.textContent = '';
+    var card = el('div', 'card');
+    card.appendChild(el('div', 'brand', 'SwiftPaw 歌单分享'));
+    card.appendChild(el('h1', null, name));
+    card.appendChild(el('div', 'meta', '共 ' + songs.length + ' 首'));
+
+    var actions = el('div', 'actions');
+    var open = el('a', 'btn primary', '用 SwiftPaw 打开');
+    open.href = 'swiftpaw://import#' + raw;
+    var dl = el('a', 'btn', '还没装？下载 SwiftPaw');
+    dl.href = RELEASES; dl.target = '_blank'; dl.rel = 'noopener';
+    actions.appendChild(open); actions.appendChild(dl);
+    card.appendChild(actions);
+
+    var hint = '点了「用 SwiftPaw 打开」没反应的话，可以复制这个页面的链接，在 SwiftPaw 里粘贴导入。';
+    if (local) hint += ' 其中 ' + local + ' 首是分享者的本地歌曲，导入后只有歌名，没法直接播放。';
+    card.appendChild(el('p', 'hint', hint));
+
+    var list = el('ol');
+    songs.forEach(function (s) {
+      var li = el('li');
+      var info = el('div', 'info');
+      info.appendChild(el('div', 't', str(s.t)));
+      var sub = [str(s.a), str(s.al)].filter(Boolean).join(' · ');
+      info.appendChild(el('div', 'a', sub || '未知歌手'));
+      li.appendChild(info);
+      var side = el('div', 'side');
+      side.appendChild(el('div', 'tag', str(s.p, 60) || '本地'));
+      var d = fmt(s.d);
+      if (d) side.appendChild(el('div', null, d));
+      li.appendChild(side);
+      list.appendChild(li);
+    });
+    card.appendChild(list);
+    app.appendChild(card);
+    document.title = name + ' - SwiftPaw 歌单';
+  }
+
+  async function main() {
+    var raw = location.hash.slice(1);
+    var dot = raw.indexOf('.');
+    if (!raw || dot < 1) return showError('链接里没有歌单数据。');
+    var ver = raw.slice(0, dot), payload = raw.slice(dot + 1);
+    if (ver !== '1') return showError('这个链接来自更新版本的 SwiftPaw，请先把 SwiftPaw 更新到最新版。');
+    if (typeof DecompressionStream === 'undefined') return showError('浏览器版本太旧，打不开这个歌单，请换用新版 Chrome、Edge、Safari 或 Firefox。');
+    try { render(await decode(payload), raw); }
+    catch (e) { showError(); }
+  }
+  window.addEventListener('hashchange', main);
+  main();
+})();
+</script>
+</body>
+</html>
