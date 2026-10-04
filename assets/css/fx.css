@@ -199,3 +199,40 @@ html.blog-owner .write-visitor-note { display: none !important; }
 .stats-like-num { font-variant-numeric: tabular-nums; }
 .stats-like.pop i { animation: stats-pop .45s ease; }
 @keyframes stats-pop { 0% { transform: scale(1); } 40% { transform: scale(1.5); } 100% { transform: scale(1); } }
+
+/* ---- 封面图首次加载时的抛光扫光（配合 effects.js 的 shine()） ---- */
+.fx-shine-host { position: relative; overflow: hidden; isolation: isolate; }
+.fx-shine-host::after {
+  content: '';
+  position: absolute;
+  top: -20%; bottom: -20%; left: 0;
+  width: 45%;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-160%) skewX(-22deg);
+  background: linear-gradient(90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, .18) 32%,
+    rgba(255, 255, 255, .78) 48%,
+    rgba(255, 255, 255, .95) 50%,
+    rgba(255, 255, 255, .78) 52%,
+    rgba(255, 255, 255, .18) 68%,
+    rgba(255, 255, 255, 0) 100%);
+}
+.fx-shine-host.fx-shine::after { animation: fx-shine-sweep 1.15s cubic-bezier(.45, .05, .25, 1) forwards; }
+.fx-shine-host.fx-shine img { animation: fx-shine-glow 1.15s ease-out; }
+@keyframes fx-shine-sweep {
+  0%   { opacity: 0;  transform: translateX(-160%) skewX(-22deg); }
+  12%  { opacity: 1; }
+  88%  { opacity: 1; }
+  100% { opacity: 0;  transform: translateX(330%) skewX(-22deg); }
+}
+@keyframes fx-shine-glow {
+  0%   { filter: brightness(1)    saturate(1); }
+  45%  { filter: brightness(1.12) saturate(1.15); }
+  100% { filter: brightness(1)    saturate(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fx-shine-host::after, .fx-shine-host img { animation: none !important; }
+}
