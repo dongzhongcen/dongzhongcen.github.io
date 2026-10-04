@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" width="760" height="300" font-family="'PingFang SC','Microsoft YaHei','Noto Sans CJK SC','Noto Sans SC',sans-serif">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#212529"/></marker>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e03131"/></marker>
+<marker id="arb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1c7ed6"/></marker></defs>
+<rect width="760" height="300" rx="12" fill="#ffffff"/>
+<text x="380.0" y="28" font-size="18" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">优先级倒置：H 被 L 手里的锁卡住，M 又把 L 挤在一边</text>
+<text x="60" y="105" font-size="14" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">H（高）</text>
+<line x1="110" y1="120" x2="720" y2="120" stroke="#dee2e6"/><text x="60" y="165" font-size="14" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">M（中）</text>
+<line x1="110" y1="180" x2="720" y2="180" stroke="#dee2e6"/><text x="60" y="225" font-size="14" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">L（低）</text>
+<line x1="110" y1="240" x2="720" y2="240" stroke="#dee2e6"/><rect x="110" y="210" width="110" height="30" rx="4" fill="#e9ecef" stroke="#495057" stroke-width="1.6"/>
+<text x="165.0" y="225" font-size="12" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">L 运行，拿到锁</text>
+<rect x="220" y="90" width="88.0" height="30" rx="4" fill="#ffe3e3" stroke="#e03131" stroke-width="1.6"/>
+<text x="264.0" y="105" font-size="12" fill="#e03131" text-anchor="middle" font-weight="normal" dominant-baseline="middle">H 抢占 L</text>
+<text x="312.0" y="80" font-size="12" fill="#e03131" text-anchor="start" font-weight="normal" dominant-baseline="middle">H 也要这把锁 → 阻塞</text>
+<rect x="330" y="150" width="357.5" height="30" rx="4" fill="#fff3bf" stroke="#f08c00" stroke-width="1.6"/>
+<text x="508.75" y="165" font-size="12" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">M 不要锁，一直在跑</text>
+<rect x="308.0" y="210" width="379.5" height="30" rx="4" fill="#fff" stroke="#adb5bd" stroke-width="1.6"/>
+<text x="497.75" y="225" font-size="12" fill="#868e96" text-anchor="middle" font-weight="normal" dominant-baseline="middle">L 拿着锁却得不到 CPU，放不了锁</text>
+<rect x="308.0" y="90" width="379.5" height="30" rx="4" fill="#fff" stroke="#e03131" stroke-width="1.2" stroke-dasharray="5 4"/>
+<text x="497.75" y="105" font-size="12" fill="#e03131" text-anchor="middle" font-weight="normal" dominant-baseline="middle">H 只能等</text>
+<line x1="110" y1="270" x2="720" y2="270" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<text x="730" y="270" font-size="12" fill="#495057" text-anchor="start" font-weight="normal" dominant-baseline="middle">时间</text>
+</svg>

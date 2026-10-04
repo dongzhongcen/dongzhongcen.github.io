@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 340" width="760" height="340" font-family="'PingFang SC','Microsoft YaHei','Noto Sans CJK SC','Noto Sans SC',sans-serif">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#212529"/></marker>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e03131"/></marker>
+<marker id="arb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1c7ed6"/></marker></defs>
+<rect width="760" height="340" rx="12" fill="#ffffff"/>
+<text x="380.0" y="28" font-size="18" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">多级反馈队列：进程 A 一层层下沉，进程 B 在 Q0 就做完</text>
+<text x="70" y="100" font-size="14" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Q0（最高级）</text>
+<text x="70" y="120" font-size="12" fill="#495057" text-anchor="middle" font-weight="normal" dominant-baseline="middle">时间片 1</text>
+<rect x="140" y="80" width="440" height="50" rx="6" fill="#f8f9fa" stroke="#212529" stroke-width="1.6"/>
+<text x="70" y="180" font-size="14" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Q1</text>
+<text x="70" y="200" font-size="12" fill="#495057" text-anchor="middle" font-weight="normal" dominant-baseline="middle">时间片 2</text>
+<rect x="140" y="160" width="440" height="50" rx="6" fill="#f8f9fa" stroke="#212529" stroke-width="1.6"/>
+<text x="70" y="260" font-size="14" fill="#212529" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Q2（最低级）</text>
+<text x="70" y="280" font-size="12" fill="#495057" text-anchor="middle" font-weight="normal" dominant-baseline="middle">时间片 4</text>
+<rect x="140" y="240" width="440" height="50" rx="6" fill="#f8f9fa" stroke="#212529" stroke-width="1.6"/>
+<rect x="160" y="88" width="90" height="34" rx="6" fill="#ffe3e3" stroke="#e03131" stroke-width="1.6"/>
+<text x="205" y="105" font-size="13" fill="#e03131" text-anchor="middle" font-weight="normal" dominant-baseline="middle">A 跑 1</text>
+<text x="300" y="105" font-size="13" fill="#495057" text-anchor="middle" font-weight="normal" dominant-baseline="middle">剩 5</text>
+<line x1="205" y1="122" x2="205" y2="168" stroke="#e03131" stroke-width="1.6" marker-end="url(#arr)"/>
+<rect x="160" y="168" width="110" height="34" rx="6" fill="#ffe3e3" stroke="#e03131" stroke-width="1.6"/>
+<text x="215" y="185" font-size="13" fill="#e03131" text-anchor="middle" font-weight="normal" dominant-baseline="middle">A 跑 2</text>
+<text x="320" y="185" font-size="13" fill="#495057" text-anchor="middle" font-weight="normal" dominant-baseline="middle">剩 3</text>
+<line x1="215" y1="202" x2="215" y2="248" stroke="#e03131" stroke-width="1.6" marker-end="url(#arr)"/>
+<rect x="160" y="248" width="130" height="34" rx="6" fill="#ffe3e3" stroke="#e03131" stroke-width="1.6"/>
+<text x="225" y="265" font-size="13" fill="#e03131" text-anchor="middle" font-weight="normal" dominant-baseline="middle">A 跑 3，结束</text>
+<rect x="420" y="88" width="110" height="34" rx="6" fill="#d0ebff" stroke="#1c7ed6" stroke-width="1.6"/>
+<text x="475" y="105" font-size="13" fill="#1c7ed6" text-anchor="middle" font-weight="normal" dominant-baseline="middle">B 跑 1，结束</text>
+<text x="670" y="90" font-size="13" fill="#212529" text-anchor="middle" font-weight="normal" dominant-baseline="middle">新进程</text>
+<line x1="640" y1="105" x2="585" y2="105" stroke="#212529" stroke-width="1.6" marker-end="url(#ar)"/>
+<text x="670" y="190" font-size="12" fill="#495057" text-anchor="middle" font-weight="normal" dominant-baseline="middle">用完时间片</text>
+<text x="670" y="208" font-size="12" fill="#495057" text-anchor="middle" font-weight="normal" dominant-baseline="middle">没结束就降一级</text>
+<text x="670" y="290" font-size="12" fill="#495057" text-anchor="middle" font-weight="normal" dominant-baseline="middle">上面各级都空</text>
+<text x="670" y="308" font-size="12" fill="#495057" text-anchor="middle" font-weight="normal" dominant-baseline="middle">才轮到这里</text>
+<text x="380" y="322" font-size="13" fill="#495057" text-anchor="middle" font-weight="normal" dominant-baseline="middle">时间片越往下越长：短进程进门就做完，长进程沉到下面，切换次数也不会太多</text>
+</svg>
