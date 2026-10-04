@@ -5,6 +5,7 @@
  *  3. 文章卡片 / 项目卡片滚动渐显，项目卡片悬停倾斜
  *  4. 文章页阅读进度条
  *  5. 全站“写日记”悬浮按钮
+ *  7. 文章封面图首次加载时扫过一道抛光高光
  * 遵守 prefers-reduced-motion；标签页隐藏时暂停。
  */
 (function () {
@@ -379,11 +380,52 @@
     }, { passive: true });
   }
 
+  /* ---------------- 7. 封面图抛光 ----------------
+   * 首页卡片和文章页顶部的封面图（Chirpy 的 .preview-img），
+   * 图片加载完、并且滚到眼前时，扫过一道斜向高光，只扫一次。 */
+  function shine() {
+    if (reduced) return;
+    var hosts = doc.querySelectorAll('#post-list .preview-img, article header .preview-img, #related-posts .preview-img');
+    if (!hosts.length) return;
+    function play(h) {
+      if (h.dataset.fxShone) return;
+      h.dataset.fxShone = '1';
+      /* 首页卡片有渐显动画，等卡片浮上来再扫光 */
+      setTimeout(function () {
+        h.classList.add('fx-shine');
+        h.addEventListener('animationend', function done(e) {
+          if (e.target !== h) return;
+          h.classList.remove('fx-shine');
+          h.removeEventListener('animationend', done);
+        });
+      }, 450);
+    }
+    function whenLoaded(h, cb) {
+      var img = h.querySelector('img');
+      if (!img) return;
+      if (img.complete && img.naturalWidth) { cb(); return; }
+      img.addEventListener('load', cb, { once: true });
+    }
+    var sio = 'IntersectionObserver' in window ? new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        sio.unobserve(en.target);
+        whenLoaded(en.target, function () { play(en.target); });
+      });
+    }, { threshold: 0.35 }) : null;
+    Array.prototype.forEach.call(hosts, function (h) {
+      h.classList.add('fx-shine-host');
+      if (sio) sio.observe(h);
+      else whenLoaded(h, function () { play(h); });
+    });
+  }
+
   function init() {
     try { depthBackground(); } catch (e) { /* 背景失败不影响其它效果 */ }
     typing();
     cards();
     progress();
+    try { shine(); } catch (e) { /* 扫光失败不影响其它效果 */ }
     writeButton();
     try { confetti(); } catch (e) { /* 彩带失败不影响其它效果 */ }
   }
